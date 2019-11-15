@@ -1,0 +1,1850 @@
+[
+  {
+    "name": "head1",
+    "charColour": "1",
+    "genderModel": "13",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "body1",
+    "charColour": "2",
+    "genderModel": "6",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "legs1",
+    "charColour": "3",
+    "genderModel": "15",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fhead1",
+    "charColour": "1",
+    "genderModel": "13",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fbody1",
+    "charColour": "2",
+    "genderModel": "10",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "head2",
+    "charColour": "1",
+    "genderModel": "13",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "head3",
+    "charColour": "1",
+    "genderModel": "5",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "head4",
+    "charColour": "1",
+    "genderModel": "13",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chefshat",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "apron",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "apron",
+    "charColour": "9789488",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "boots",
+    "charColour": "5592405",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fullhelm",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fullhelm",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fullhelm",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fullhelm",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fullhelm",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fullhelm",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fullhelm",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fullhelm",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chainmail",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chainmail",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chainmail",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chainmail",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chainmail",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chainmail",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chainmail",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemailtop",
+    "charColour": "10083839",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "4210752",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "platemaillegs",
+    "charColour": "10083839",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "leatherarmour",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "leathergloves",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sword",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sword",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sword",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sword",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sword",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sword",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sword",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fplatemailtop",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fplatemailtop",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fplatemailtop",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fplatemailtop",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fplatemailtop",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fplatemailtop",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fplatemailtop",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "apron",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "16711680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "2434341",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "4210926",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "4246592",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "15658560",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "15636736",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "11141341",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "255",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardshat",
+    "charColour": "255",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardshat",
+    "charColour": "4210752",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "necklace",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "necklace",
+    "charColour": "16763980",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "255",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "4210752",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wizardsrobe",
+    "charColour": "10510400",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "15609904",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wizardsrobe",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "10510400",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "4210752",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "16036851",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "15609904",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Skirt",
+    "charColour": "8400921",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "7824998",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "7829367",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "2245205",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "4347170",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "26214",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "56797",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "16750896",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "11363121",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "crossbow",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "false",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "longbow",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "false",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "battleaxe",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "battleaxe",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "battleaxe",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "battleaxe",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "battleaxe",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "battleaxe",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "battleaxe",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mace",
+    "charColour": "16737817",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mace",
+    "charColour": "15654365",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mace",
+    "charColour": "15658734",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mace",
+    "charColour": "10072780",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mace",
+    "charColour": "11717785",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mace",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mace",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "staff",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "rat",
+    "charColour": "4805259",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "demon",
+    "charColour": "16384000",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "spider",
+    "charColour": "13408576",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "spider",
+    "charColour": "16728144",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "camel",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cow",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sheep",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "false",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "unicorn",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "bear",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chicken",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skeleton",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skelweap",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "true",
+    "number": "0"
+  },
+  {
+    "name": "zombie",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "zombweap",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "true",
+    "number": "0"
+  },
+  {
+    "name": "ghost",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "bat",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "goblin",
+    "charColour": "8969727",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "goblin",
+    "charColour": "16711680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "goblin",
+    "charColour": "47872",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "gobweap",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "true",
+    "number": "0"
+  },
+  {
+    "name": "scorpion",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "dragon",
+    "charColour": "65280",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "dragon",
+    "charColour": "16711680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "dragon",
+    "charColour": "21981",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wolf",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wolf",
+    "charColour": "10066329",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "partyhat",
+    "charColour": "16711680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "partyhat",
+    "charColour": "16776960",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "partyhat",
+    "charColour": "255",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "partyhat",
+    "charColour": "65280",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "partyhat",
+    "charColour": "16711935",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "partyhat",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "leathergloves",
+    "charColour": "11202303",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chicken",
+    "charColour": "16711680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "fplatemailtop",
+    "charColour": "10083839",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "1118481",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wolf",
+    "charColour": "9789488",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "spider",
+    "charColour": "65535",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "battleaxe",
+    "charColour": "16711748",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "sword",
+    "charColour": "16711748",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "eyepatch",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "true",
+    "number": "0"
+  },
+  {
+    "name": "demon",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "dragon",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "spider",
+    "charColour": "14535680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wolf",
+    "charColour": "2236962",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "unicorn",
+    "charColour": "2236962",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "demon",
+    "charColour": "6291456",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "spider",
+    "charColour": "2236962",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "necklace",
+    "charColour": "3158064",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "rat",
+    "charColour": "11184810",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "11250603",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chainmail",
+    "charColour": "11250603",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardshat",
+    "charColour": "16711680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "legs1",
+    "charColour": "9785408",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "gasmask",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "mediumhelm",
+    "charColour": "16711748",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "spider",
+    "charColour": "3852326",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "spear",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "halloweenmask",
+    "charColour": "52224",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "1052688",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "1052688",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "halloweenmask",
+    "charColour": "16711680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "halloweenmask",
+    "charColour": "255",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "16755370",
+    "genderModel": "15",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "11206570",
+    "genderModel": "15",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "11184895",
+    "genderModel": "15",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "16777164",
+    "genderModel": "15",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "13434879",
+    "genderModel": "15",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardshat",
+    "charColour": "16755370",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardshat",
+    "charColour": "11206570",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardshat",
+    "charColour": "11184895",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardshat",
+    "charColour": "16777164",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardshat",
+    "charColour": "13434879",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "16755370",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "11206570",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "11184895",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "16777164",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "13434879",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wizardsrobe",
+    "charColour": "3978097",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "3978097",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "boots",
+    "charColour": "16755370",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "boots",
+    "charColour": "11206570",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "boots",
+    "charColour": "11184895",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "boots",
+    "charColour": "16777164",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "boots",
+    "charColour": "13434879",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "santahat",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "ibanstaff",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "souless",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "boots",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "legs1",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wizardsrobe",
+    "charColour": "8421376",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "8421376",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Wolf",
+    "charColour": "13420580",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "bunnyears",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "saradominstaff",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "spear",
+    "charColour": "56797",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "skirt",
+    "charColour": "1392384",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "1392384",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wolf",
+    "charColour": "5585408",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "chicken",
+    "charColour": "6893315",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "squareshield",
+    "charColour": "13500416",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "cape",
+    "charColour": "16777215",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "boots",
+    "charColour": "1118481",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "wizardsrobe",
+    "charColour": "1118481",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "Scythe",
+    "charColour": "0",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "partyhat",
+    "charColour": "-13421773",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  },
+  {
+    "name": "dragon",
+    "charColour": "16711680",
+    "genderModel": "0",
+    "hasA": "true",
+    "hasF": "false",
+    "number": "0"
+  }
+]

@@ -1,0 +1,42 @@
+{
+    "160": {
+        "gemID": "164",
+        "requiredLvl": "20",
+        "exp": "50"
+    },
+    "159": {
+        "gemID": "163",
+        "requiredLvl": "27",
+        "exp": "67"
+    },
+    "158": {
+        "gemID": "162",
+        "requiredLvl": "34",
+        "exp": "85"
+    },
+    "157": {
+        "gemID": "161",
+        "requiredLvl": "43",
+        "exp": "108"
+    },
+    "542": {
+        "gemID": "523",
+        "requiredLvl": "55",
+        "exp": "130"
+    },
+    "891": {
+        "gemID": "894",
+        "requiredLvl": "1",
+        "exp": "15"
+    },
+    "890": {
+        "gemID": "893",
+        "requiredLvl": "13",
+        "exp": "20"
+    },
+    "889": {
+        "gemID": "892",
+        "requiredLvl": "16",
+        "exp": "25"
+    }
+}

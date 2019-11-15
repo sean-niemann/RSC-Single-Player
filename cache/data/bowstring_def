@@ -1,0 +1,62 @@
+﻿{
+    "277": {
+        "bowID": "189",
+        "requiredLvl": "5",
+        "exp": "5"
+    },
+    "276": {
+        "bowID": "188",
+        "requiredLvl": "10",
+        "exp": "10"
+    },
+    "659": {
+        "bowID": "649",
+        "requiredLvl": "20",
+        "exp": "17"
+    },
+    "658": {
+        "bowID": "648",
+        "requiredLvl": "25",
+        "exp": "25"
+    },
+    "661": {
+        "bowID": "651",
+        "requiredLvl": "35",
+        "exp": "33"
+    },
+    "660": {
+        "bowID": "650",
+        "requiredLvl": "40",
+        "exp": "42"
+    },
+    "663": {
+        "bowID": "653",
+        "requiredLvl": "50",
+        "exp": "50"
+    },
+    "662": {
+        "bowID": "652",
+        "requiredLvl": "55",
+        "exp": "58"
+    },
+    "665": {
+        "bowID": "655",
+        "requiredLvl": "65",
+        "exp": "67"
+    },
+    "664": {
+        "bowID": "654",
+        "requiredLvl": "70",
+        "exp": "75"
+    },
+    "667": {
+        "bowID": "657",
+        "requiredLvl": "80",
+        "exp": "83"
+    },
+    "666": {
+        "bowID": "656",
+        "requiredLvl": "85",
+        "exp": "92"
+    }
+}

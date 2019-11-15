@@ -1,0 +1,62 @@
+{
+    "14": {
+        "shaftAmount": "10",
+        "shaftLvl": "1",
+        "shortbowID": "277",
+        "shortbowLvl": "5",
+        "shortbowExp": "5",
+        "longbowID": "276",
+        "longbowLvl": "10",
+        "longbowExp": "10"
+    },
+    "632": {
+        "shaftAmount": "15",
+        "shaftLvl": "15",
+        "shortbowID": "659",
+        "shortbowLvl": "20",
+        "shortbowExp": "17",
+        "longbowID": "658",
+        "longbowLvl": "25",
+        "longbowExp": "25"
+    },
+    "633": {
+        "shaftAmount": "20",
+        "shaftLvl": "30",
+        "shortbowID": "661",
+        "shortbowLvl": "35",
+        "shortbowExp": "33",
+        "longbowID": "660",
+        "longbowLvl": "40",
+        "longbowExp": "42"
+    },
+    "634": {
+        "shaftAmount": "30",
+        "shaftLvl": "45",
+        "shortbowID": "663",
+        "shortbowLvl": "50",
+        "shortbowExp": "50",
+        "longbowID": "662",
+        "longbowLvl": "55",
+        "longbowExp": "58"
+    },
+    "635": {
+        "shaftAmount": "40",
+        "shaftLvl": "60",
+        "shortbowID": "665",
+        "shortbowLvl": "65",
+        "shortbowExp": "67",
+        "longbowID": "664",
+        "longbowLvl": "70",
+        "longbowExp": "75"
+    },
+    "636": {
+        "shaftAmount": "50",
+        "shaftLvl": "75",
+        "shortbowID": "667",
+        "shortbowLvl": "80",
+        "shortbowExp": "83",
+        "longbowID": "666",
+        "longbowLvl": "85",
+        "longbowExp": "92"
+    }
+}

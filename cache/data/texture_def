@@ -1,0 +1,109 @@
+)]}'
+[
+  {
+    "name": "wall",
+    "animationName": "door"
+  },
+  { "name": "water" },
+  { "name": "wall" },
+  { "name": "planks" },
+  {
+    "name": "wall",
+    "animationName": "doorway"
+  },
+  {
+    "name": "wall",
+    "animationName": "window"
+  },
+  { "name": "roof" },
+  {
+    "name": "wall",
+    "animationName": "arrowslit"
+  },
+  { "name": "leafytree" },
+  { "name": "treestump" },
+  { "name": "fence" },
+  { "name": "mossy" },
+  { "name": "railings" },
+  { "name": "painting1" },
+  { "name": "painting2" },
+  { "name": "marble" },
+  { "name": "deadtree" },
+  { "name": "fountain" },
+  {
+    "name": "wall",
+    "animationName": "stainedglass"
+  },
+  { "name": "target" },
+  { "name": "books" },
+  { "name": "timbered" },
+  {
+    "name": "timbered",
+    "animationName": "timberwindow"
+  },
+  { "name": "mossybricks" },
+  { "name": "growingwheat" },
+  { "name": "gungywater" },
+  { "name": "web" },
+  {
+    "name": "wall",
+    "animationName": "desertwindow"
+  },
+  {
+    "name": "wall",
+    "animationName": "crumbled"
+  },
+  { "name": "cavern" },
+  { "name": "cavern2" },
+  { "name": "lava" },
+  { "name": "pentagram" },
+  { "name": "mapletree" },
+  { "name": "yewtree" },
+  { "name": "helmet" },
+  {
+    "name": "canvas",
+    "animationName": "tentbottom"
+  },
+  { "name": "Chainmail2" },
+  { "name": "mummy" },
+  { "name": "jungleleaf" },
+  { "name": "jungleleaf3" },
+  { "name": "jungleleaf4" },
+  { "name": "jungleleaf5" },
+  { "name": "jungleleaf6" },
+  {
+    "name": "mossybricks",
+    "animationName": "arrowslit"
+  },
+  {
+    "name": "planks",
+    "animationName": "window"
+  },
+  {
+    "name": "planks",
+    "animationName": "junglewindow"
+  },
+  { "name": "cargonet" },
+  { "name": "bark" },
+  { "name": "canvas" },
+  {
+    "name": "canvas",
+    "animationName": "tentdoor"
+  },
+  {
+    "name": "wall",
+    "animationName": "lowcrumbled"
+  },
+  {
+    "name": "cavern",
+    "animationName": "crumbled"
+  },
+  {
+    "name": "cavern2",
+    "animationName": "crumbled"
+  },
+  {
+    "name": "lava",
+    "animationName": "flames"
+  }
+]
