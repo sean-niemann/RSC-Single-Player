@@ -34,7 +34,7 @@ public class Admin extends Plugin implements CommandListener {
             return;
         }
         
-        if(command.equals("stress")) {
+        if(command.equals("stresstest")) {
             String failMessage = "Syntax: ::stress <item|npc|object> <radius>";
             if(args.length != 2) {
                 player.message(failMessage);
