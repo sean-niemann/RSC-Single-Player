@@ -65,10 +65,10 @@ public class Admin extends Plugin implements CommandListener {
                     for(int i = 0; i < num; i++) {
                         for(int j = 0; j < num; j++) {
                             int id = (int) (Math.random() * EntityManager.getNPCs().length);
-                            spawnNpcNoAggro(id, x + i, y + j);
-                            spawnNpcNoAggro(id, x + i, y - j);
-                            spawnNpcNoAggro(id, x - i, y + j);
-                            spawnNpcNoAggro(id, x - i, y - j);
+                            //spawnNpcNoAggro(id, x + i, y + j);
+                            //spawnNpcNoAggro(id, x + i, y - j);
+                            //spawnNpcNoAggro(id, x - i, y + j);
+                            //spawnNpcNoAggro(id, x - i, y - j);
                         }
                     }
                     break;
@@ -76,10 +76,10 @@ public class Admin extends Plugin implements CommandListener {
                     for(int i = 0; i < num; i++) {
                         for(int j = 0; j < num; j++) {
                             int id = (int) (Math.random() * EntityManager.getGameObjectDefs().length);
-                            spawnObject(new GameObject(new Point(x + i, y + j), id, 0, 0));
-                            spawnObject(new GameObject(new Point(x + i, y - j), id, 0, 0));
-                            spawnObject(new GameObject(new Point(x - i, y + j), id, 0, 0));
-                            spawnObject(new GameObject(new Point(x - i, y - j), id, 0, 0));
+                            //spawnObject(new GameObject(new Point(x + i, y + j), id, 0, 0));
+                            //spawnObject(new GameObject(new Point(x + i, y - j), id, 0, 0));
+                            //spawnObject(new GameObject(new Point(x - i, y + j), id, 0, 0));
+                            //spawnObject(new GameObject(new Point(x - i, y - j), id, 0, 0));
                         }
                     }
                     break;
