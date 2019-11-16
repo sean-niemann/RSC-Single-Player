@@ -34,6 +34,62 @@ public class Admin extends Plugin implements CommandListener {
             return;
         }
         
+        if(command.equals("stress")) {
+            String failMessage = "Syntax: ::stress <item|npc|object> <radius>";
+            if(args.length != 2) {
+                player.message(failMessage);
+                return;
+            }
+            int num;
+            try {
+                num = Integer.parseInt(args[1]) - 1;
+            } catch(NumberFormatException e) {
+                player.message(failMessage);
+                return;
+            }
+            int x = player.getX();
+            int y = player.getY();
+            switch(args[0]) {
+                case "item":
+                    for(int i = 0; i < num; i++) {
+                        for(int j = 0; j < num; j++) {
+                            int id = (int) (Math.random() * EntityManager.getItems().length);
+                            spawnItem(id, x + i, y + j, 1, player);
+                            spawnItem(id, x + i, y - j, 1, player);
+                            spawnItem(id, x - i, y + j, 1, player);
+                            spawnItem(id, x - i, y - j, 1, player);
+                        }
+                    }
+                    break;
+                case "npc":
+                    for(int i = 0; i < num; i++) {
+                        for(int j = 0; j < num; j++) {
+                            int id = (int) (Math.random() * EntityManager.getNPCs().length);
+                            spawnNpcNoAggro(id, x + i, y + j);
+                            spawnNpcNoAggro(id, x + i, y - j);
+                            spawnNpcNoAggro(id, x - i, y + j);
+                            spawnNpcNoAggro(id, x - i, y - j);
+                        }
+                    }
+                    break;
+                case "object":
+                    for(int i = 0; i < num; i++) {
+                        for(int j = 0; j < num; j++) {
+                            int id = (int) (Math.random() * EntityManager.getGameObjectDefs().length);
+                            spawnObject(new GameObject(new Point(x + i, y + j), id, 0, 0));
+                            spawnObject(new GameObject(new Point(x + i, y - j), id, 0, 0));
+                            spawnObject(new GameObject(new Point(x - i, y + j), id, 0, 0));
+                            spawnObject(new GameObject(new Point(x - i, y - j), id, 0, 0));
+                        }
+                    }
+                    break;
+                default:
+                    player.message(failMessage);
+                    break;
+            }
+            return;
+        }
+        
         if(command.equals("clearcache")) {
             if(args.length != 1) {
                 player.message("Syntax: ::clearcache <all|key>");
