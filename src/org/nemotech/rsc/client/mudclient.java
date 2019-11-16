@@ -3100,7 +3100,7 @@ public class mudclient extends Shell {
         if(errorLoadingData) return;
         loadEntities();
         if(errorLoadingData) return;
-        scene = new Scene(surface, 15000, 15000, 4000);
+        scene = new Scene(surface, 15000, 15000, 4096);
         scene.setBounds(gameWidth / 2, gameHeight / 2, gameWidth / 2, gameHeight / 2, gameWidth, const_9);
         scene.clipFar3d = 2400;
         scene.clipFar2d = 2400;
