@@ -41,7 +41,7 @@ public class DataLoader {
         //BufferedInputStream inputStream = new BufferedInputStream(new GZIPInputStream(new FileInputStream(dataFile)));
         BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(dataFile)); 
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-        System.out.print("loaded: " + ident);
+        //System.out.print("loaded: " + ident);
         return (T) gson.fromJson(new JsonReader(inputStreamReader), type);
     }
     
