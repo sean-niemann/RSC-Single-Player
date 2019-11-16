@@ -20,4 +20,5 @@ RSC Single Player is a one player RuneScape Classic clone. You do not need any s
 ![picture alt](https://nemotech.org/rsc/mopar1.png "RSCSP1")
 ![picture alt](https://nemotech.org/rsc/mopar2.png "RSCSP2")
 
+JS Version: https://nemotech.org/apps/rsc/
 Original post: https://forum.moparscape.org/rsc-server-development-discussion/52/release-rsc-single-player-v2-3/672287/
