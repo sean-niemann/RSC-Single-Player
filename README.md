@@ -15,7 +15,7 @@ RSC Single Player is a one player RuneScape Classic replica. You do not need any
 * Social tab and "Report a Player" features have been removed for obvious reasons
 * Music player preloaded with tracks (off by default)
 * Swap bank items by right clicking on the item
-* You can use multiple accounts, but do not use more than 1 account during the same session (you can have multiple windows open)
+* You can use multiple accounts, but do not use more than one account during the same session (you can have multiple windows open)
 
 ![picture alt](https://nemotech.org/rsc/mopar1.png "RSCSP1")
 ![picture alt](https://nemotech.org/rsc/mopar2.png "RSCSP2")
