@@ -14,7 +14,7 @@ public class Constants {
 
     public static final String MEMBERS_ONLY_MESSAGE = "This feature is only available on a members server";
     
-    public static final String APPLICATION_TITLE = "RSC Single Player v" + VERSION;
+    public static final String APPLICATION_TITLE = "RSC Single Player " + VERSION;
 
     public static final int APPLICATION_WIDTH = 950, APPLICATION_HEIGHT = 500;
     
