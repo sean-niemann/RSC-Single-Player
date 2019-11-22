@@ -18,9 +18,6 @@ RSC Single Player is a one player RuneScape Classic reproduction. You do not nee
 * You can use multiple accounts, but do not use more than one account during the same session (you can have multiple windows open)
 * Administrator privileges can be acquired by creating a new account with username "root" and password "devkit", and also supports right-clicking the mini-map to teleport
 
-# Releases
-https://github.com/sean-niemann/RSC-Single-Player/releases
-
 # Media
 
 ![picture alt](https://nemotech.org/rsc/mopar1.png "RSCSP1")
