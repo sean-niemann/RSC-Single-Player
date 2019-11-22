@@ -4,7 +4,7 @@ import java.io.File;
 
 public class Constants {
     
-    public static final double VERSION = 2.4;
+    public static final double VERSION = 2.3;
     
     public static int EXPERIENCE_MULTIPLIER = 8;
 
