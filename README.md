@@ -25,6 +25,6 @@ RSC Single Player is a one player RuneScape Classic reproduction. You do not nee
 
 # Other Information
 
-JS Version: https://nemotech.org/apps/rsc/ (Use username "root")
+Browser Version: https://nemotech.org/apps/rsc/ (Use username "root")
 
 Original post: https://forum.moparscape.org/rsc-server-development-discussion/52/release-rsc-single-player-v2-3/672287/
