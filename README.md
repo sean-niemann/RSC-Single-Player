@@ -1,5 +1,5 @@
 # RSC-Single-Player
-RSC Single Player is a one player RuneScape Classic reproduction. You do not need any sort of internet connection what-so-ever to play. The client handles itself entirely and does not rely on a server.
+RSC Single Player is a one player RuneScape Classic reproduction. The client handles itself entirely and does not rely on a server.
 
 # Requirements
 * Java 8 or newer
