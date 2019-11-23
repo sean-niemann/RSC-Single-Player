@@ -479,8 +479,8 @@ public class Menu {
                     controlClicked[control] = true;
                 }
             }
-            if (controlListEntryMouseButtonDown[control] == k3 && aBoolean219)
-                i4 = 0xff0000;
+            //if (controlListEntryMouseButtonDown[control] == k3 && aBoolean219)
+            //    i4 = 0xff0000;
             surface.drawString(listEntries[k3], x + 2, i3, textSize, i4);
             i3 += surface.textHeight(textSize);
             if (i3 >= y + height)

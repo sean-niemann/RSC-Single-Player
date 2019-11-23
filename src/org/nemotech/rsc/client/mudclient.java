@@ -13,6 +13,8 @@ import org.nemotech.rsc.model.player.Player;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FilenameFilter;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -952,15 +954,17 @@ public class mudclient extends Shell {
         surface.drawLineHoriz(uiX, uiY + 24, uiWidth, 0);
         surface.drawLineVert(uiX + uiWidth / 2, uiY, 24, 0);
         surface.drawLineHoriz(uiX, (uiY + uiHeight) - 16, uiWidth, 0);
-        surface.drawStringCenter("Friends", uiX + uiWidth / 4, uiY + 16, 4, 0);
-        surface.drawStringCenter("Ignore", uiX + uiWidth / 4 + uiWidth / 2, uiY + 16, 4, 0);
+        surface.drawStringCenter("Songs", uiX + uiWidth / 4, uiY + 16, 4, 0);
+        surface.drawStringCenter("Settings", uiX + uiWidth / 4 + uiWidth / 2, uiY + 16, 4, 0);
         panelSocialList.clearList(controlListSocialPlayers);
         File musicFolder = new File(Constants.CACHE_DIRECTORY + "audio/music");
-        File[] songFiles = musicFolder.listFiles();
+        FilenameFilter filter = (File dir, String name) -> {
+            return name.endsWith(".midi");
+        };
+        File[] songFiles = musicFolder.listFiles(filter);
+        Arrays.sort(songFiles);
         for(int i = 0; i < songFiles.length; i++) {
-            if(songFiles[i].getName().endsWith(".midi")) {
-                panelSocialList.addListEntry(controlListSocialPlayers, i, Util.capitalizeWord(songFiles[i].getName().replace(".midi", "").replace("_", " ")));
-            }
+            panelSocialList.addListEntry(controlListSocialPlayers, i, Util.capitalizeWord(songFiles[i].getName().replace(".midi", "").replace("_", " ")));
         }
         if (uiTabSocialSubTab == 0) {
             // friend list
@@ -999,8 +1003,11 @@ public class mudclient extends Shell {
             }
             if (mouseButtonClick == 1) {
                 int index = panelSocialList.getListEntryIndex(controlListSocialPlayers);
-                selectedSong = songFiles[index].getName();
-                this.musicPlayer.start(selectedSong);
+                if(index >= 0 && index <= songFiles.length) {
+                    selectedSong = songFiles[index].getName();
+                    musicPlayer.stop();
+                    musicPlayer.start(selectedSong);
+                }
             }
             mouseButtonClick = 0;
         }

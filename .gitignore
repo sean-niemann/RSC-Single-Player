@@ -1,3 +1,6 @@
 nbprojcet
 build
 /dist/
+.DS_Store
+build.xml
+manifest.mf
