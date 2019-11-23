@@ -2,6 +2,7 @@ package org.nemotech.rsc;
 
 import org.nemotech.rsc.client.mudclient;
 import org.nemotech.rsc.client.action.ActionManager;
+import org.nemotech.rsc.client.action.impl.SleepHandler;
 import org.nemotech.rsc.client.update.UpdateManager;
 import org.nemotech.rsc.core.EngineThread;
 import org.nemotech.rsc.external.EntityManager;
@@ -15,7 +16,7 @@ import org.nemotech.rsc.plugins.PluginManager;
  * 
  * Pass me a bottle, Mr. Jones
  * 
- * @author Sean Niemann    (Zoso_)
+ * @author Sean Niemann    (Zoso)
  * @author Jamie Furnaghan (Reines)
  * @author n0m
  */
@@ -43,8 +44,8 @@ public final class Main {
         new ActionManager().init();
         // load updaters
         new UpdateManager().init();
-        // load captcha into memory (disabled due to popular demand)
-        //ActionManager.get(SleepHandler.class).init();
+        // load captcha into memory
+        ActionManager.get(SleepHandler.class).init();
     }
     
 }

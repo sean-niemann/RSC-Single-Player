@@ -12,6 +12,7 @@ import org.nemotech.rsc.client.sound.MusicPlayer;
 import org.nemotech.rsc.model.player.Player;
 
 import java.awt.*;
+import java.io.File;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,7 +80,7 @@ public class mudclient extends Shell {
         byte y = 36;
         controlListMagic = panelMagic.addTextListInteractive(x, y + 24, 196, 90, 1, 500, true);
         panelSocialList = new Menu(surface, 5);
-        controlListSocialPlayers = panelSocialList.addTextListInteractive(x, y + 40, 196, 126, 1, 500, true);
+        controlListSocialPlayers = panelSocialList.addTextListInteractive(x, y + 40, 196, 126, 1, 2000, true);
         panelQuestList = new Menu(surface, 5);
         controlListQuest = panelQuestList.addTextListInteractive(x, y + 24, 196, 251, 1, 500, true);
 
@@ -954,6 +955,13 @@ public class mudclient extends Shell {
         surface.drawStringCenter("Friends", uiX + uiWidth / 4, uiY + 16, 4, 0);
         surface.drawStringCenter("Ignore", uiX + uiWidth / 4 + uiWidth / 2, uiY + 16, 4, 0);
         panelSocialList.clearList(controlListSocialPlayers);
+        File musicFolder = new File(Constants.CACHE_DIRECTORY + "audio/music");
+        File[] songFiles = musicFolder.listFiles();
+        for(int i = 0; i < songFiles.length; i++) {
+            if(songFiles[i].getName().endsWith(".midi")) {
+                panelSocialList.addListEntry(controlListSocialPlayers, i, Util.capitalizeWord(songFiles[i].getName().replace(".midi", "").replace("_", " ")));
+            }
+        }
         if (uiTabSocialSubTab == 0) {
             // friend list
         }
@@ -962,30 +970,16 @@ public class mudclient extends Shell {
         }
         panelSocialList.drawPanel();
         if (uiTabSocialSubTab == 0) {
-            // remove / send pm
-            int colour;
-            if (super.mouseX > uiX && super.mouseX < uiX + uiWidth && super.mouseY > (uiY + uiHeight) - 16 && super.mouseY < uiY + uiHeight) {
-                colour = 0xffff00;
-                if (mouseButtonClick != 0) {
-                    player.getSender().sendMessage("This feature has been disabled");
-                }
+            if(musicPlayer.isRunning()) {
+                String song = Util.capitalizeWord(selectedSong.replace(".midi", "").replace("_", " "));
+                surface.drawStringCenter("Playing: " + song, uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.GREEN2);
             } else {
-                colour = 0xffffff;
+                surface.drawStringCenter("No song currently selected", uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.RED);
             }
-            surface.drawStringCenter("Click here to add a friend", uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, colour);
+            
         }
         if (uiTabSocialSubTab == 1) {
-            // remove ignore
-            int colour;
-            if (super.mouseX > uiX && super.mouseX < uiX + uiWidth && super.mouseY > (uiY + uiHeight) - 16 && super.mouseY < uiY + uiHeight) {
-                colour = 0xffff00;
-                if (mouseButtonClick != 0) {
-                    player.getSender().sendMessage("This feature has been disabled");
-                }
-            } else {
-                colour = 0xffffff;
-            }
-            surface.drawStringCenter("Click here to add a name", uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, colour);
+            surface.drawStringCenter("Click here to add a name", uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.GRAY);
         }
         if (!nomenus) {
             return;
@@ -1003,9 +997,16 @@ public class mudclient extends Shell {
                     panelSocialList.resetListProps(controlListSocialPlayers);
                 }
             }
+            if (mouseButtonClick == 1) {
+                int index = panelSocialList.getListEntryIndex(controlListSocialPlayers);
+                selectedSong = songFiles[index].getName();
+                this.musicPlayer.start(selectedSong);
+            }
             mouseButtonClick = 0;
         }
     }
+    
+    private String selectedSong;
 
     @Override
     protected void handleKeyPress(int i) {
@@ -2966,13 +2967,14 @@ public class mudclient extends Shell {
                 errorLoadingData = true;
                 return;
             }
-            //byte[] tgaData = new byte[100000];
-            //Util.readFully(Constants.CACHE_DIRECTORY + "images/inv1.tga", tgaData, 100000);
-            //surface.loadSpriteTEMP(tgaData, 0, spriteMedia, true, false);
-            //surface.parseSprite(spriteMedia, tgaData, buff, 1);
             byte buff[] = Util.unpackData("index.dat", 0, media);
-            surface.parseSprite(spriteMedia, Util.unpackData("inv1.dat", 0, media), buff, 1);
-            surface.parseSprite(spriteMedia + 1, Util.unpackData("inv2.dat", 0, media), buff, 6);
+            byte[] tgaData = new byte[100000];
+            Util.readFully(Constants.CACHE_DIRECTORY + "images/inv1.tga", tgaData, tgaData.length);
+            surface.loadSpriteTEMP(tgaData, 0, spriteMedia, true, false);
+            Util.readFully(Constants.CACHE_DIRECTORY + "images/inv2.tga", tgaData, tgaData.length);
+            //surface.parseSprite(spriteMedia, Util.unpackData("inv1.dat", 0, media), buff, 1);
+            surface.loadSpriteTEMP(tgaData, 0, spriteMedia + 1, true, 1, 6, false);
+            //surface.parseSprite(spriteMedia + 1, Util.unpackData("inv2.dat", 0, media), buff, 6);
             surface.parseSprite(spriteMedia + 9, Util.unpackData("bubble.dat", 0, media), buff, 1);
             surface.parseSprite(spriteMedia + 10, Util.unpackData("runescape.dat", 0, media), buff, 1);
 
@@ -2980,7 +2982,7 @@ public class mudclient extends Shell {
             surface.parseSprite(spriteMedia + 14, Util.unpackData("icon.dat", 0, media), buff, 8);
             surface.parseSprite(spriteMedia + 22, Util.unpackData("hbar.dat", 0, media), buff, 1);
             surface.parseSprite(spriteMedia + 23, Util.unpackData("hbar2.dat", 0, media), buff, 1);
-            surface.parseSprite(spriteMedia + 24, Util.unpackData("compass.dat", 0, media), buff, 1);
+            surface.parseSprite(spriteMedia + 24, Util.unpackData("compass.dat", 0, media), buff, 1); 
             surface.parseSprite(spriteMedia + 25, Util.unpackData("buttons.dat", 0, media), buff, 2);
             surface.parseSprite(spriteUtil, Util.unpackData("scrollbar.dat", 0, media), buff, 2);
             surface.parseSprite(spriteUtil + 2, Util.unpackData("corners.dat", 0, media), buff, 4);
@@ -3088,7 +3090,7 @@ public class mudclient extends Shell {
         byte y = 36;
         controlListMagic = panelMagic.addTextListInteractive(x, y + 24, 196, 90, 1, 500, true);
         panelSocialList = new Menu(surface, 5);
-        controlListSocialPlayers = panelSocialList.addTextListInteractive(x, y + 40, 196, 126, 1, 500, true);
+        controlListSocialPlayers = panelSocialList.addTextListInteractive(x, y + 40, 196, 126, 1, 2000, true);
         panelQuestList = new Menu(surface, 5);
         controlListQuest = panelQuestList.addTextListInteractive(x, y + 24, 196, 251, 1, 500, true);
         //

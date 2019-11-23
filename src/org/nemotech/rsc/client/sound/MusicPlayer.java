@@ -6,8 +6,8 @@ import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
-import javax.sound.midi.InvalidMidiDataException;
 
+import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
@@ -59,6 +59,19 @@ public class MusicPlayer {
                 };
                 File[] musicFiles = directory.listFiles(filter);
                 String fileName = musicFiles[Util.random(musicFiles.length - 1)].getName();
+                InputStream is = new BufferedInputStream(new FileInputStream(directory.getAbsolutePath() + File.separator + fileName));
+                sequencer.setSequence(is);
+            } catch(IOException | InvalidMidiDataException e) {
+                e.printStackTrace();
+            }
+            sequencer.start();
+        }).start();
+    }
+    
+    public void start(String fileName) {
+        new Thread(() -> {
+            try {
+                File directory = new File(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator);
                 InputStream is = new BufferedInputStream(new FileInputStream(directory.getAbsolutePath() + File.separator + fileName));
                 sequencer.setSequence(is);
             } catch(IOException | InvalidMidiDataException e) {
