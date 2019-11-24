@@ -395,7 +395,7 @@ public abstract class Shell extends Panel implements Runnable, MouseListener, Mo
         drawString(graphics, "Created by JAGeX - visit www.jagex.com", fontHelvetica13b, midx + 138, midy + 30);
         drawString(graphics, "\2512001-2003 Andrew Gower and Jagex Ltd", fontHelvetica13b, midx + 138, midy + 44);
         graphics.setColor(new Color(132, 132, 152));
-        drawString(graphics, "Serverless Modification by Sean Niemann [sean@nemotech.org]", fontHelvetica12, midx + 138, panelHeight - 20);
+        drawString(graphics, "Serverless Modification by Zoso [sean@nemotech.org]", fontHelvetica12, midx + 138, panelHeight - 20);
         if (logoHeaderText != null) {
             graphics.setColor(Color.WHITE);
             drawString(graphics, logoHeaderText, fontHelvetica13b, midx + 138, midy - 120);

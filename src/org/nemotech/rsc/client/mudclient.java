@@ -3722,6 +3722,7 @@ public class mudclient extends Shell {
     }
 
     private void loadSounds() {
+        showLoadingProgress(90, "Loading sounds");
         musicPlayer = new MusicPlayer();
         SoundEffect.init();
     }
@@ -4245,6 +4246,7 @@ public class mudclient extends Shell {
     }
 
     private void loadTextures() {
+        showLoadingProgress(50, "Loading 2d textures");
         byte[] buffTextures = readDataFile("textures.jag", "Textures", 50);
         if (buffTextures == null) {
             errorLoadingData = true;

@@ -211,11 +211,6 @@ public class Admin extends Plugin implements CommandListener {
             return;
         }
         
-        if(command.equals("pos") || command.equals("coords")) {
-            player.getSender().sendMessage("@whi@" + player.getX() + " " + player.getY() + "@que@");
-            return;
-        }
-        
         if(command.equals("runes")) {
             player.getInventory().add(new InvItem(31, 5000));
             player.getInventory().add(new InvItem(32, 5000));
@@ -232,31 +227,6 @@ public class Admin extends Plugin implements CommandListener {
             player.getInventory().add(new InvItem(825, 500));
             player.getSender().sendInventory();
             return;
-        }
-        
-        if(command.equals("sector")) {
-            int x = player.getX();
-            int y = player.getY();
-            int sectorH = 0;
-            int sectorX = 0;
-            int sectorY = 0;
-            if (x != -1 && y != -1) {
-                if (y >= 0 && y <= 1007)
-                    sectorH = 0;
-                else if (y >= 1007 && y <= 1007 + 943) {
-                    sectorH = 1;
-                    y -= 943;
-                } else if (y >= 1008 + 943 && y <= 1007 + (943 * 2)) {
-                    sectorH = 2;
-                    y -= 943 * 2;
-                } else {
-                    sectorH = 3;
-                    y -= 943 * 3;
-                }
-                sectorX = (x / 48) + 48;
-                sectorY = (y / 48) + 37;
-            }
-            player.getSender().sendMessage("@que@" + "h" + sectorH + "x" + sectorX + "y" + sectorY);
         }
         
         if(command.equals("stuff")) {

