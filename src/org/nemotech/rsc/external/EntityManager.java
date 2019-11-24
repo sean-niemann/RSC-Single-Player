@@ -273,7 +273,7 @@ public class EntityManager {
     }
     
     public static NPCDropDef[] getNPCDropsForID(int id) {
-        NPCDropDef[] drops = new NPCDropDef[50];
+        NPCDropDef[] drops = new NPCDropDef[100];
         int i = 0;
         for(NPCDropDef drop : npcDrops) {
             if(drop.getNpcID() == id) {
