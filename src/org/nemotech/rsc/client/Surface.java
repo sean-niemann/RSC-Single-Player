@@ -6,154 +6,6 @@ import java.awt.image.*;
 import org.nemotech.rsc.util.Util;
 
 public class Surface implements ImageProducer, ImageObserver {
-    
-    public void loadSpriteTEMP(byte abyte0[], int j, int k, boolean flag, boolean flag1) {
-        loadSpriteTEMP(abyte0, j, k, flag, 1, 1, flag1);
-    }
-
-    public void loadSpriteTEMP(byte abyte0[], int j, int k, boolean flag, int l, boolean flag1) {
-        loadSpriteTEMP(abyte0, j, k, flag, l, 1, flag1);
-    }
-
-    public void loadSpriteTEMP(byte abyte0[], int j, int k, boolean flag, int l, int i1, boolean flag1) {
-        int j1 = (abyte0[13 + j] & 0xff) * 256 + (abyte0[12 + j] & 0xff);
-        int k1 = (abyte0[15 + j] & 0xff) * 256 + (abyte0[14 + j] & 0xff);
-        int l1 = -1;
-        int ai[] = new int[256];
-        for (int i2 = 0; i2 < 256; i2++) {
-            ai[i2] = 0xff000000 + ((abyte0[j + 20 + i2 * 3] & 0xff) << 16) + ((abyte0[j + 19 + i2 * 3] & 0xff) << 8) + (abyte0[j + 18 + i2 * 3] & 0xff);
-            if (ai[i2] == -65281)
-                l1 = i2;
-        }
-
-        if (l1 == -1)
-            flag = false;
-        if (flag1 && flag)
-            ai[l1] = ai[0];
-        int j2 = j1 / l;
-        int k2 = k1 / i1;
-        int ai1[] = new int[j2 * k2];
-        for (int l2 = 0; l2 < i1; l2++) {
-            for (int i3 = 0; i3 < l; i3++) {
-                int j3 = 0;
-                for (int k3 = k2 * l2; k3 < k2 * (l2 + 1); k3++) {
-                    for (int l3 = j2 * i3; l3 < j2 * (i3 + 1); l3++)
-                        if (flag1)
-                            ai1[j3++] = abyte0[j + 786 + l3 + (k1 - k3 - 1) * j1] & 0xff;
-                        else
-                            ai1[j3++] = ai[abyte0[j + 786 + l3 + (k1 - k3 - 1) * j1] & 0xff];
-
-                }
-
-                if (flag1)
-                    af(ai1, j2, k2, k++, flag, ai, l1);
-                else
-                    af(ai1, j2, k2, k++, flag, null, -65281);
-            }
-
-        }
-
-    }
-
-    private void af(int ai[], int j, int k, int l, boolean flag, int ai1[], int i1) {
-        int j1 = 0;
-        int k1 = 0;
-        int l1 = j;
-        int i2 = k;
-        if (flag) {
-            label0:
-            for (int j2 = 0; j2 < k; j2++) {
-                for (int i3 = 0; i3 < j; i3++) {
-                    int i4 = ai[i3 + j2 * j];
-                    if (i4 == i1)
-                        continue;
-                    k1 = j2;
-                    break label0;
-                }
-
-            }
-
-            label1:
-            for (int j3 = 0; j3 < j; j3++) {
-                for (int j4 = 0; j4 < k; j4++) {
-                    int j5 = ai[j3 + j4 * j];
-                    if (j5 == i1)
-                        continue;
-                    j1 = j3;
-                    break label1;
-                }
-
-            }
-
-            label2:
-            for (int k4 = k - 1; k4 >= 0; k4--) {
-                for (int k5 = 0; k5 < j; k5++) {
-                    int k6 = ai[k5 + k4 * j];
-                    if (k6 == i1)
-                        continue;
-                    i2 = k4 + 1;
-                    break label2;
-                }
-
-            }
-
-            label3:
-            for (int l5 = j - 1; l5 >= 0; l5--) {
-                for (int l6 = 0; l6 < k; l6++) {
-                    int i7 = ai[l5 + l6 * j];
-                    if (i7 == i1)
-                        continue;
-                    l1 = l5 + 1;
-                    break label3;
-                }
-
-            }
-
-        }
-        
-        spriteWidth[l] = l1 - j1;
-        spriteHeight[l] = i2 - k1;
-        spriteTranslate[l] = flag;
-        spriteTranslateX[l] = j1;
-        spriteTranslateY[l] = k1;
-        spriteWidthFull[l] = j;
-        spriteHeightFull[l] = k;
-        if (ai1 == null) {
-            surfacePixels[l] = new int[(l1 - j1) * (i2 - k1)];
-            int k2 = 0;
-            for (int k3 = k1; k3 < i2; k3++) {
-                for (int l4 = j1; l4 < l1; l4++) {
-                    int i6 = ai[l4 + k3 * j];
-                    if (flag) {
-                        if (i6 == i1)
-                            i6 = 0;
-                        if (i6 == 0xff000000)
-                            i6 = 0xff010101;
-                    }
-                    surfacePixels[l][k2++] = i6 & 0xffffff;
-                }
-
-            }
-
-            return;
-        }
-        spriteColoursUsed[l] = new byte[(l1 - j1) * (i2 - k1)];
-        spriteColourList[l] = ai1;
-        int l2 = 0;
-        for (int l3 = k1; l3 < i2; l3++) {
-            for (int i5 = j1; i5 < l1; i5++) {
-                int j6 = ai[i5 + l3 * j];
-                if (flag)
-                    if (j6 == i1)
-                        j6 = 0;
-                    else if (j6 == 0)
-                        j6 = i1;
-                spriteColoursUsed[l][l2++] = (byte) j6;
-            }
-
-        }
-
-    }
 
     public static int anInt346;
     public static int anInt347;
@@ -191,15 +43,8 @@ public class Surface implements ImageProducer, ImageObserver {
     protected int boundsBottomX;
     
     public final int fontHeight(int font) {
-        return font != 0
-                    ? (font != 1
-                            ? (font == 2 ? 14
-                                    : (font == 3 ? 15
-                                            : (font != 4 ? (font != 5
-                                                    ? (font == 6 ? 24 : (font != 7 ? this.c(font) : 29)) : 19)
-                                                    : 15)))
-                            : 14)
-                    : 12;
+        return font != 0 ? (font != 1 ? (font == 2 ? 14 : (font == 3 ? 15 : (font != 4 ? (font != 5 ? (font == 6 ? 24
+            : (font != 7 ? this.c(font) : 29)) : 19) : 15))) : 14) : 12;
     }
     
     private int c(int var2) {
@@ -2114,7 +1959,157 @@ public class Surface implements ImageProducer, ImageObserver {
         return total;
     }
 
+    @Override
     public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
         return true;
     }
+    
+    public void loadSpriteRaw(byte abyte0[], int j, int k, boolean flag, boolean flag1) {
+        loadSpriteRaw(abyte0, j, k, flag, 1, 1, flag1);
+    }
+
+    public void loadSpriteRaw(byte abyte0[], int j, int k, boolean flag, int l, boolean flag1) {
+        loadSpriteRaw(abyte0, j, k, flag, l, 1, flag1);
+    }
+
+    public void loadSpriteRaw(byte abyte0[], int j, int k, boolean flag, int l, int i1, boolean flag1) {
+        int j1 = (abyte0[13 + j] & 0xff) * 256 + (abyte0[12 + j] & 0xff);
+        int k1 = (abyte0[15 + j] & 0xff) * 256 + (abyte0[14 + j] & 0xff);
+        int l1 = -1;
+        int ai[] = new int[256];
+        for (int i2 = 0; i2 < 256; i2++) {
+            ai[i2] = 0xff000000 + ((abyte0[j + 20 + i2 * 3] & 0xff) << 16) + ((abyte0[j + 19 + i2 * 3] & 0xff) << 8) + (abyte0[j + 18 + i2 * 3] & 0xff);
+            if (ai[i2] == -65281)
+                l1 = i2;
+        }
+
+        if (l1 == -1)
+            flag = false;
+        if (flag1 && flag)
+            ai[l1] = ai[0];
+        int j2 = j1 / l;
+        int k2 = k1 / i1;
+        int ai1[] = new int[j2 * k2];
+        for (int l2 = 0; l2 < i1; l2++) {
+            for (int i3 = 0; i3 < l; i3++) {
+                int j3 = 0;
+                for (int k3 = k2 * l2; k3 < k2 * (l2 + 1); k3++) {
+                    for (int l3 = j2 * i3; l3 < j2 * (i3 + 1); l3++)
+                        if (flag1)
+                            ai1[j3++] = abyte0[j + 786 + l3 + (k1 - k3 - 1) * j1] & 0xff;
+                        else
+                            ai1[j3++] = ai[abyte0[j + 786 + l3 + (k1 - k3 - 1) * j1] & 0xff];
+
+                }
+
+                if (flag1)
+                    af(ai1, j2, k2, k++, flag, ai, l1);
+                else
+                    af(ai1, j2, k2, k++, flag, null, -65281);
+            }
+
+        }
+
+    }
+
+    private void af(int ai[], int j, int k, int l, boolean flag, int ai1[], int i1) {
+        int j1 = 0;
+        int k1 = 0;
+        int l1 = j;
+        int i2 = k;
+        if (flag) {
+            label0:
+            for (int j2 = 0; j2 < k; j2++) {
+                for (int i3 = 0; i3 < j; i3++) {
+                    int i4 = ai[i3 + j2 * j];
+                    if (i4 == i1)
+                        continue;
+                    k1 = j2;
+                    break label0;
+                }
+
+            }
+
+            label1:
+            for (int j3 = 0; j3 < j; j3++) {
+                for (int j4 = 0; j4 < k; j4++) {
+                    int j5 = ai[j3 + j4 * j];
+                    if (j5 == i1)
+                        continue;
+                    j1 = j3;
+                    break label1;
+                }
+
+            }
+
+            label2:
+            for (int k4 = k - 1; k4 >= 0; k4--) {
+                for (int k5 = 0; k5 < j; k5++) {
+                    int k6 = ai[k5 + k4 * j];
+                    if (k6 == i1)
+                        continue;
+                    i2 = k4 + 1;
+                    break label2;
+                }
+
+            }
+
+            label3:
+            for (int l5 = j - 1; l5 >= 0; l5--) {
+                for (int l6 = 0; l6 < k; l6++) {
+                    int i7 = ai[l5 + l6 * j];
+                    if (i7 == i1)
+                        continue;
+                    l1 = l5 + 1;
+                    break label3;
+                }
+
+            }
+
+        }
+        
+        spriteWidth[l] = l1 - j1;
+        spriteHeight[l] = i2 - k1;
+        spriteTranslate[l] = flag;
+        spriteTranslateX[l] = j1;
+        spriteTranslateY[l] = k1;
+        spriteWidthFull[l] = j;
+        spriteHeightFull[l] = k;
+        if (ai1 == null) {
+            surfacePixels[l] = new int[(l1 - j1) * (i2 - k1)];
+            int k2 = 0;
+            for (int k3 = k1; k3 < i2; k3++) {
+                for (int l4 = j1; l4 < l1; l4++) {
+                    int i6 = ai[l4 + k3 * j];
+                    if (flag) {
+                        if (i6 == i1)
+                            i6 = 0;
+                        if (i6 == 0xff000000)
+                            i6 = 0xff010101;
+                    }
+                    surfacePixels[l][k2++] = i6 & 0xffffff;
+                }
+
+            }
+
+            return;
+        }
+        spriteColoursUsed[l] = new byte[(l1 - j1) * (i2 - k1)];
+        spriteColourList[l] = ai1;
+        int l2 = 0;
+        for (int l3 = k1; l3 < i2; l3++) {
+            for (int i5 = j1; i5 < l1; i5++) {
+                int j6 = ai[i5 + l3 * j];
+                if (flag)
+                    if (j6 == i1)
+                        j6 = 0;
+                    else if (j6 == 0)
+                        j6 = i1;
+                spriteColoursUsed[l][l2++] = (byte) j6;
+            }
+
+        }
+
+    }
+    
 }
