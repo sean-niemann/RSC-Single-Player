@@ -82,7 +82,7 @@ public class mudclient extends Shell {
         byte y = 36;
         controlListMagic = panelMagic.addTextListInteractive(x, y + 24, 196, 90, 1, 500, true);
         panelSocialList = new Menu(surface, 5);
-        controlListSocialPlayers = panelSocialList.addTextListInteractive(x, y + 40, 196, 126, 1, 2000, true);
+        controlListSocialPlayers = panelSocialList.addTextListInteractive(x, y, 196, 166, 1, 2000, true);
         panelQuestList = new Menu(surface, 5);
         controlListQuest = panelQuestList.addTextListInteractive(x, y + 24, 196, 251, 1, 500, true);
 
@@ -134,7 +134,6 @@ public class mudclient extends Shell {
     private int mouseClickXX;
     private int mouseClickXY;
     private int controlListSocialPlayers;
-    private int uiTabSocialSubTab;
     private String selectedItemName;
     private int controlListQuest;
     private int uiTabPlayerInfoSubTab;
@@ -941,21 +940,12 @@ public class mudclient extends Shell {
         surface.drawSprite(uiX - 49, 3, spriteMedia + 5);
         int uiWidth = 196;
         int uiHeight = 182;
-        int l;
-        int k = l = Surface.rgb2long(160, 160, 160);
-        if (uiTabSocialSubTab == 0) {
-            k = Surface.rgb2long(220, 220, 220);
-        } else {
-            l = Surface.rgb2long(220, 220, 220);
-        }
-        surface.drawBoxAlpha(uiX, uiY, uiWidth / 2, 24, k, 128);
+        int l = Surface.rgb2long(220, 220, 220);
+        surface.drawBoxAlpha(uiX, uiY, uiWidth / 2, 24, l, 128);
         surface.drawBoxAlpha(uiX + uiWidth / 2, uiY, uiWidth / 2, 24, l, 128);
         surface.drawBoxAlpha(uiX, uiY + 24, uiWidth, uiHeight - 24, Surface.rgb2long(220, 220, 220), 128);
-        surface.drawLineHoriz(uiX, uiY + 24, uiWidth, 0);
-        surface.drawLineVert(uiX + uiWidth / 2, uiY, 24, 0);
         surface.drawLineHoriz(uiX, (uiY + uiHeight) - 16, uiWidth, 0);
-        surface.drawStringCenter("Songs", uiX + uiWidth / 4, uiY + 16, 4, 0);
-        surface.drawStringCenter("Settings", uiX + uiWidth / 4 + uiWidth / 2, uiY + 16, 4, 0);
+        
         panelSocialList.clearList(controlListSocialPlayers);
         File musicFolder = new File(Constants.CACHE_DIRECTORY + "audio/music");
         FilenameFilter filter = (File dir, String name) -> {
@@ -966,24 +956,12 @@ public class mudclient extends Shell {
         for(int i = 0; i < songFiles.length; i++) {
             panelSocialList.addListEntry(controlListSocialPlayers, i, Util.capitalizeWord(songFiles[i].getName().replace(".midi", "").replace("_", " ")));
         }
-        if (uiTabSocialSubTab == 0) {
-            // friend list
-        }
-        if (uiTabSocialSubTab == 1) {
-            // ignore list
-        }
         panelSocialList.drawPanel();
-        if (uiTabSocialSubTab == 0) {
-            if(musicPlayer.isRunning()) {
-                String song = Util.capitalizeWord(selectedSong.replace(".midi", "").replace("_", " "));
-                surface.drawStringCenter("Playing: " + song, uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.GREEN2);
-            } else {
-                surface.drawStringCenter("No song currently selected", uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.RED);
-            }
-            
-        }
-        if (uiTabSocialSubTab == 1) {
-            surface.drawStringCenter("Click here to add a name", uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.GRAY);
+        if(musicPlayer.isRunning()) {
+            String song = Util.capitalizeWord(selectedSong.replace(".midi", "").replace("_", " "));
+            surface.drawStringCenter("Playing: " + song, uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.GREEN2);
+        } else {
+            surface.drawStringCenter("No song currently selected", uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.RED);
         }
         if (!nomenus) {
             return;
@@ -992,15 +970,6 @@ public class mudclient extends Shell {
         uiY = super.mouseY - 36;
         if (uiX >= 0 && uiY >= 0 && uiX < 196 && uiY < 182) {
             panelSocialList.handleMouse(uiX + (surface.width2 - 199), uiY + 36, super.lastMouseButtonDown, super.mouseButtonDown);
-            if (uiY <= 24 && mouseButtonClick == 1) {
-                if (uiX < 98 && uiTabSocialSubTab == 1) {
-                    uiTabSocialSubTab = 0;
-                    panelSocialList.resetListProps(controlListSocialPlayers);
-                } else if (uiX > 98 && uiTabSocialSubTab == 0) {
-                    uiTabSocialSubTab = 1;
-                    panelSocialList.resetListProps(controlListSocialPlayers);
-                }
-            }
             if (mouseButtonClick == 1) {
                 int index = panelSocialList.getListEntryIndex(controlListSocialPlayers);
                 if(index >= 0 && index <= songFiles.length) {
@@ -3097,7 +3066,7 @@ public class mudclient extends Shell {
         byte y = 36;
         controlListMagic = panelMagic.addTextListInteractive(x, y + 24, 196, 90, 1, 500, true);
         panelSocialList = new Menu(surface, 5);
-        controlListSocialPlayers = panelSocialList.addTextListInteractive(x, y + 40, 196, 126, 1, 2000, true);
+        controlListSocialPlayers = panelSocialList.addTextListInteractive(x, y, 196, 166, 1, 2000, true);
         panelQuestList = new Menu(surface, 5);
         controlListQuest = panelQuestList.addTextListInteractive(x, y + 24, 196, 251, 1, 500, true);
         //

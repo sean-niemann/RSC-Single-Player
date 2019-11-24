@@ -10,18 +10,15 @@ public class User extends Plugin implements CommandListener {
     @Override
     public void onCommand(String command, String[] args, Player player) {
         if(command.equals("help")) {
-            mudclient.getInstance().showAlert("@yel@Single Player RSC Help % %" + "@whi@Type ::stuck if your character gets stuck.", false);
+            mudclient.getInstance().showAlert("@yel@Single Player RSC Help % %" + "@whi@Type ::stuck if your character gets stuck. % "
+                + "Type ::pos to list your current location in the world.", false);
             return;
         }
         if(command.equals("stuck")) {
             player.teleport(122, 647, true);
             return;
         }
-        if(command.equals("pos") || command.equals("coords")) {
-            player.getSender().sendMessage("@whi@" + player.getX() + " " + player.getY() + "@que@");
-            return;
-        }
-        if(command.equals("sector")) {
+        if(command.equals("pos") || command.equals("coords") || command.equals("sector")) {
             int x = player.getX();
             int y = player.getY();
             int sectorH = 0;
@@ -43,7 +40,7 @@ public class User extends Plugin implements CommandListener {
                 sectorX = (x / 48) + 48;
                 sectorY = (y / 48) + 37;
             }
-            player.getSender().sendMessage("@que@" + "h" + sectorH + "x" + sectorX + "y" + sectorY);
+            player.getSender().sendMessage(String.format("@whi@X:%d Y:%d (Sector h%dx%dy%d)@que@", x, y, sectorH, sectorX, sectorY));
             return;
         }
     }
