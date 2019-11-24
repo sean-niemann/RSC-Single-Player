@@ -119,16 +119,19 @@ public class Menu {
     public void handleScroll(int handle, int i) {
         int limit = controlListEntryCount[handle] - (controlHeight[handle] / surface.textHeight(controlTextSize[handle]));
         int diff = Math.abs(limit - controlScrollAmount[handle]);
-        if (i > 0)
-            if(diff < i)
+        if (i > 0) {
+            if(diff < i) {
                 controlScrollAmount[handle] += diff;
-            else
+            } else {
                 controlScrollAmount[handle] += i;
-        else if(i < 0 && controlScrollAmount[handle] > 0)
-            if (controlScrollAmount[handle] < -i)
+            }
+        } else if(i < 0 && controlScrollAmount[handle] > 0) {
+            if (controlScrollAmount[handle] < -i) {
                 controlScrollAmount[handle] -= controlScrollAmount[handle];
-            else
+            } else {
                 controlScrollAmount[handle] += i;
+            }
+        }
     }
 
     public boolean isClicked(int i) {
@@ -344,8 +347,8 @@ public class Menu {
     protected void drawListContainer(int x, int y, int width, int height, int corner1, int corner2) {
         int x2 = (x + width) - 12;
         surface.drawBoxEdge(x2, y, 12, height, 0);
-        surface.drawSprite(x2 + 1, y + 1, baseSpriteStart);// up arrow?
-        surface.drawSprite(x2 + 1, (y + height) - 12, 1 + baseSpriteStart);// down arrow?
+        surface.drawSprite(x2 + 1, y + 1, baseSpriteStart); // up arrow
+        surface.drawSprite(x2 + 1, (y + height) - 12, 1 + baseSpriteStart); // down arrow
         surface.drawLineHoriz(x2, y + 13, 12, 0);
         surface.drawLineHoriz(x2, (y + height) - 13, 12, 0);
         surface.drawGradient(x2 + 1, y + 14, 11, height - 27, colourScrollbarTop, colourScrollbarBottom);

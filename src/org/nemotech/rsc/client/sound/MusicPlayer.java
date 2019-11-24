@@ -20,6 +20,8 @@ import org.nemotech.rsc.util.Util;
 public class MusicPlayer {
     
     private Sequencer sequencer;
+    private String currentSong;
+    private boolean paused = false;
     
     public MusicPlayer() {
         try {
@@ -30,7 +32,8 @@ public class MusicPlayer {
             sequencer.addMetaEventListener((MetaMessage event) -> {
                 /* done playing */
                 if(event.getType() == 47) {
-                    mudclient.getInstance().musicStopped = true;
+                    currentSong = null;
+                    mudclient.getInstance().selectedSong = null;
                 }
             });
         } catch(MidiUnavailableException e) {
@@ -38,34 +41,32 @@ public class MusicPlayer {
         }
     }
     
-    public void startNewPlayerSong() {
-        new Thread(() -> {
-            try {
-                InputStream is = new BufferedInputStream(new FileInputStream(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator + "book_of_spells.midi"));
-                sequencer.setSequence(is);
-            } catch(IOException | InvalidMidiDataException e) {
-                e.printStackTrace();
-            }
-            sequencer.start();
-        }).start();
+    public boolean isPaused() {
+        return paused;
     }
     
-    public void start() {
-        new Thread(() -> {
-            try {
-                File directory = new File(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator);
-                FilenameFilter filter = (File dir, String name) -> {
-                    return name.endsWith(".midi");
-                };
-                File[] musicFiles = directory.listFiles(filter);
-                String fileName = musicFiles[Util.random(musicFiles.length - 1)].getName();
-                InputStream is = new BufferedInputStream(new FileInputStream(directory.getAbsolutePath() + File.separator + fileName));
-                sequencer.setSequence(is);
-            } catch(IOException | InvalidMidiDataException e) {
-                e.printStackTrace();
-            }
-            sequencer.start();
-        }).start();
+    public void pause() {
+        sequencer.stop();
+        paused = true;
+    }
+    
+    public void resume() {
+        sequencer.start();
+        paused = false;
+    }
+    
+    public String getCurrentSong() {
+        return currentSong;
+    }
+    
+    public void startRandom() {
+        File directory = new File(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator);
+        FilenameFilter filter = (File dir, String name) -> {
+            return name.endsWith(".midi");
+        };
+        File[] musicFiles = directory.listFiles(filter);
+        String fileName = musicFiles[Util.random(musicFiles.length - 1)].getName();
+        start(fileName);
     }
     
     public void start(String fileName) {
@@ -74,6 +75,7 @@ public class MusicPlayer {
                 File directory = new File(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator);
                 InputStream is = new BufferedInputStream(new FileInputStream(directory.getAbsolutePath() + File.separator + fileName));
                 sequencer.setSequence(is);
+                currentSong = fileName;
             } catch(IOException | InvalidMidiDataException e) {
                 e.printStackTrace();
             }
