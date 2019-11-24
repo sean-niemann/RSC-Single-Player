@@ -116,20 +116,23 @@ public class Menu {
         }
     }
 
-    public void handleScroll(int handle, int i) {
+    public void handleScroll(int handle, int scroll) {
         int limit = controlListEntryCount[handle] - (controlHeight[handle] / surface.textHeight(controlTextSize[handle]));
         int diff = Math.abs(limit - controlScrollAmount[handle]);
-        if (i > 0) {
-            if(diff < i) {
+        if(diff > limit) {
+            return;
+        }
+        if (scroll > 0) {
+            if(diff < scroll) {
                 controlScrollAmount[handle] += diff;
             } else {
-                controlScrollAmount[handle] += i;
+                controlScrollAmount[handle] += scroll;
             }
-        } else if(i < 0 && controlScrollAmount[handle] > 0) {
-            if (controlScrollAmount[handle] < -i) {
+        } else if(scroll < 0 && controlScrollAmount[handle] > 0) {
+            if (controlScrollAmount[handle] < -scroll) {
                 controlScrollAmount[handle] -= controlScrollAmount[handle];
             } else {
-                controlScrollAmount[handle] += i;
+                controlScrollAmount[handle] += scroll;
             }
         }
     }
