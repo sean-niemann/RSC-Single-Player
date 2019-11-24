@@ -50,7 +50,7 @@ public class DataLoader {
     }
 
     private File wrap(String file) { // shortens code and helps prevent typos
-        return new File(Constants.CACHE_DIRECTORY + "data" + File.separator, file);// + ".dat");
+        return new File(Constants.CACHE_DIRECTORY + "data" + File.separator, file); // + ".json");
     }
     
     private void populate() {

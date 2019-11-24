@@ -957,7 +957,7 @@ public class mudclient extends Shell {
             if(super.mouseX > uiX + 30 && super.mouseX < uiX + 50 && super.mouseY > uiY + 2 && super.mouseY < uiY + 20) {
                 if(musicPlayer.isRunning()) {
                     if(selectedSong != null) {
-                        musicPlayer.start(username);
+                        musicPlayer.start(selectedSong);
                     } else {
                         musicPlayer.start(musicPlayer.getCurrentSong());
                     }

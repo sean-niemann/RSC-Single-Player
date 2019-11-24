@@ -15480,63 +15480,15 @@
     "name": "Scythe"
   },
   {
-    "price": 1,
-    "command": "Redeem",
-    "mask": 16737817,
-    "members": false,
-    "sprite": 180,
-    "stackable": false,
-    "trade": true,
-    "wieldable": 0,
-    "description": "Upon redeeming this card you will receive 1 day of membership",
-    "name": "Bronze Membership Card"
-  },
-  {
-    "price": 1,
-    "command": "Redeem",
-    "mask": 15658734,
-    "members": false,
-    "sprite": 180,
-    "stackable": false,
-    "trade": true,
-    "wieldable": 0,
-    "description": "Upon redeeming this card you will receive 7 days of membership",
-    "name": "Silver Membership Card"
-  },
-  {
-    "price": 1,
-    "command": "Redeem",
-    "mask": 16763980,
-    "members": false,
-    "sprite": 180,
-    "stackable": false,
-    "trade": true,
-    "wieldable": 0,
-    "description": "Upon redeeming this card you will receive 30 days of membership",
-    "name": "Gold Membership Card"
-  },
-  {
-    "price": 2,
+    "price": 350000,
     "command": "",
     "mask": 0,
     "members": false,
-    "sprite": 189,
-    "stackable": false,
-    "trade": false,
-    "wieldable": 32,
-    "description": "This item is for staff only",
-    "name": "Party Hat"
-  },
-  {
-    "price": 6400,
-    "command": "",
-    "mask": 0,
-    "members": true,
-    "sprite": 55,
+    "sprite": 17,
     "stackable": false,
     "trade": true,
-    "wieldable": 24,
-    "description": "Elven craftsmanship",
-    "name": "Twin Shot"
+    "wieldable": 256,
+    "description": "A powerful pair of gloves",
+    "name": "Sean's Gloves"
   }
 ]

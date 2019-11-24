@@ -4769,32 +4769,17 @@
     "weaponPowerPoints": 0,
     "wieldPos": 9
   },
-  "1293": {
-    "armourPoints": 0,
+  "1290": {
+    "armourPoints": 2999,
     "femaleOnly": false,
     "magicPoints": 0,
     "prayerPoints": 0,
     "rangePoints": 0,
     "requiredStats": {},
-    "sprite": 230,
-    "type": 32,
-    "weaponAimPoints": 0,
-    "weaponPowerPoints": 0,
-    "wieldPos": 5
-  },
-  "1294": {
-    "armourPoints": 0,
-    "femaleOnly": false,
-    "magicPoints": 0,
-    "prayerPoints": 0,
-    "rangePoints": 14,
-    "requiredStats": {
-      "4": 50
-    },
-    "sprite": 108,
-    "type": 24,
-    "weaponAimPoints": 0,
-    "weaponPowerPoints": 0,
-    "wieldPos": 3
+    "sprite": 47,
+    "type": 256,
+    "weaponAimPoints": 799,
+    "weaponPowerPoints": 499,
+    "wieldPos": 10
   }
 }
