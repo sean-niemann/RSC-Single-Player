@@ -40,7 +40,7 @@ public class User extends Plugin implements CommandListener {
                 sectorX = (x / 48) + 48;
                 sectorY = (y / 48) + 37;
             }
-            player.getSender().sendMessage(String.format("@whi@X:%d Y:%d (Sector h%dx%dy%d)@que@", player.getX(), player.getY(), sectorH, sectorX, sectorY));
+            player.getSender().sendMessage(String.format("@whi@X: %d Y: %d (Sector h%dx%dy%d)@que@", player.getX(), player.getY(), sectorH, sectorX, sectorY));
             return;
         }
     }
