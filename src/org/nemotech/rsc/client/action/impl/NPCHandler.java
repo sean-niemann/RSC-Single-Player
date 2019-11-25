@@ -36,6 +36,7 @@ public class NPCHandler implements ActionHandler {
         player.setFollowing(npc);
         player.setStatus(Action.TALKING_MOB);
         World.getWorld().getDelayedEventHandler().add(new WalkToMobEvent(player, npc, 1) {
+            @Override
             public void arrived() {
                 owner.resetFollowing();
                 owner.resetPath();
@@ -114,13 +115,16 @@ public class NPCHandler implements ActionHandler {
 
         if (player.getRangeEquip() < 0) {
             World.getWorld().getDelayedEventHandler().add(new WalkToMobEvent(player, affectedMob, affectedMob instanceof NPC ? 1 : 2) {
+                @Override
                 public void arrived() {
                     owner.resetPath();
                     owner.resetFollowing();
+                    
                     //!owner.nextTo(affectedMob)
                     if (owner.isBusy() || affectedMob.isBusy() || !owner.withinRange(affectedMob, affectedMob instanceof NPC ? 1 : 2) || owner.getStatus() != Action.ATTACKING_MOB) {
                         return;
                     }
+                    
                     if (affectedMob instanceof NPC) {
                         if (PluginManager.getInstance().blockDefaultAction("PlayerAttackNpc", new Object[] { owner, (NPC)affectedMob })) {
                             return;
@@ -170,6 +174,7 @@ public class NPCHandler implements ActionHandler {
                 radius = 4;
             
             World.getWorld().getDelayedEventHandler().add(new WalkToMobEvent(player, affectedMob, radius) {
+                @Override
                 public void arrived() {
                     owner.resetPath();
                     if (owner.isBusy() || owner.getStatus() != Action.ATTACKING_MOB) {

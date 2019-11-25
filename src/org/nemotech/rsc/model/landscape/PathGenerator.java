@@ -135,12 +135,11 @@ public class PathGenerator {
 
     private boolean isBlocking(int x, int y, int bit) {
         TileValue t = World.getWorld().getTileValue(x, y);
-        /*
-        if(Area.getArea(Point.location(x, y)).getObject(x, y) != null) {
-            if(Area.getArea(Point.location(x, y)).getObject(x, y).getGameObjectDef().getName().equalsIgnoreCase("tree")) {
+        /*if(Area.getArea(Point.getLocation(x, y)).getObject(x, y) != null) {
+            if(Area.getArea(Point.getLocation(x, y)).getObject(x, y).getGameObjectDef().getName().equalsIgnoreCase("tree")) {
                 return true;
             } 
-        } */
+        }*/
         if (t.overlay == 2 || t.overlay == 11) // water & lava
             return false; 
         return isBlocking(t.mapValue, (byte) bit);
@@ -179,7 +178,7 @@ public class PathGenerator {
     
     /*private boolean isObjectAllowed(int x, int y) {
         return Area.getArea(new Point(x, y)).getObject(x, y) != null && Area.getArea(new Point(x, y)).getObject(x, y).getDoorDef().getName().equalsIgnoreCase("door");
-    }*/
+    }
 
     /**
      * @author xEnt Calculations to check if a wall is in between your target

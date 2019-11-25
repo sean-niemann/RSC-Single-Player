@@ -916,12 +916,12 @@ public final class Player extends Mob {
         
         preferredDimension = new Dimension(playerData.applicationWidth, playerData.applicationHeight);
             
-        for(InvItem item : getInventory().getItems()) {
-            if(item.isWielded() && item.getDef().isWieldable()) {
-                item.setWield(true);
-                updateWornItems(item.getWieldableDef().getWieldPos(), item.getWieldableDef().getSprite());
-            }
-        }
+        getInventory().getItems().stream().filter((item) -> (item.isWielded() && item.getDef().isWieldable())).map((item) -> {
+            item.setWield(true);
+            return item;
+        }).forEachOrdered((item) -> {
+            updateWornItems(item.getWieldableDef().getWieldPos(), item.getWieldableDef().getSprite());
+        });
 
         /* End of loading methods */
 
@@ -945,6 +945,7 @@ public final class Player extends Mob {
         if(getLastLogin() == 0) {
             setChangingAppearance(true);
             getSender().sendAppearanceScreen();
+            mudclient.getInstance().getMusicPlayer().start("newbie_melody.midi");
         }
         setLastLogin(System.currentTimeMillis());
         getSender().sendLoginBox();

@@ -54,7 +54,7 @@ public class Terrain {
             tileArchive = new ZipFile(Constants.CACHE_DIRECTORY + "terrain-members.zip");
         } catch(IOException e) {
             e.printStackTrace();
-            System.out.println("CANNOT LOAD LANDSCAPE FILE");
+            System.out.println("Error loading landscape file");
         }
         
         for (int i = 0; i < 64; i++) {

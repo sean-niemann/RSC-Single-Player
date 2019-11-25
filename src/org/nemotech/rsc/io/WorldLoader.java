@@ -100,11 +100,7 @@ public class WorldLoader {
                 }
             }
         }
-        int x = 0;
         for(GameObjectLoc loc : EntityManager.getObjectLocs()) {
-            if(loc == null) {
-                System.out.println(x++);
-            }
             world.registerGameObject(new GameObject(loc), true);
         }
 
