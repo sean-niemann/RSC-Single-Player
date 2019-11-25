@@ -1,6 +1,6 @@
 nbproject
 build
-/dist/
+dist
 .DS_Store
 build.xml
 manifest.mf
