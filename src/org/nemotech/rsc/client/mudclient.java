@@ -82,7 +82,7 @@ public class mudclient extends Shell {
         byte y = 36;
         controlListMagic = panelMagic.addTextListInteractive(x, y + 24, 196, 90, 1, 500, true);
         panelMusic = new Menu(surface, 5);
-        controlListMusic = panelMusic.addTextListInteractive(x, y + 18, 196, 166 - 18, 1, 2000, true);
+        controlListMusic = panelMusic.addTextListInteractive(x, y + 24, 196, 166 - 24, 1, 2000, true);
         panelQuestList = new Menu(surface, 5);
         controlListQuest = panelQuestList.addTextListInteractive(x, y + 24, 196, 251, 1, 500, true);
 
@@ -137,7 +137,7 @@ public class mudclient extends Shell {
     private String selectedItemName;
     private int controlListQuest;
     private int uiTabPlayerInfoSubTab;
-
+    
     @Override
     public void handleMouseScroll(int scroll) {
         if (scroll > 1) {
@@ -584,13 +584,14 @@ public class mudclient extends Shell {
     private boolean walkToActionSource(int startX, int startY, int x1, int y1, int x2, int y2, boolean checkObjects, boolean walkToAction) {
         int steps = world.getStepCount(startX, startY, x1, y1, x2, y2, walkPathX, walkPathY, checkObjects);
         if (steps == -1) {
-            if (walkToAction) {
+            return false;
+            /*if (walkToAction) {
                 steps = 1;
                 walkPathX[0] = x1;
                 walkPathY[0] = y1;
             } else {
                 return false;
-            }
+            }*/
         }
         steps--;
         startX = walkPathX[steps];
@@ -785,8 +786,8 @@ public class mudclient extends Shell {
 
     }
 
-    private void walkToActionSource(int sx, int sy, int dx, int dy, boolean action) {
-        walkToActionSource(sx, sy, dx, dy, dx, dy, false, action);
+    private boolean walkToActionSource(int sx, int sy, int dx, int dy, boolean action) {
+        return walkToActionSource(sx, sy, dx, dy, dx, dy, false, action);
     }
 
     private void createMessageTabPanel() {
@@ -945,6 +946,7 @@ public class mudclient extends Shell {
         surface.drawBoxAlpha(uiX + uiWidth / 2, uiY, uiWidth / 2, 24, l, 128);
         surface.drawBoxAlpha(uiX, uiY + 24, uiWidth, uiHeight - 24, Surface.rgb2long(220, 220, 220), 128);
         surface.drawLineHoriz(uiX, (uiY + uiHeight) - 16, uiWidth, 0);
+        surface.drawLineHoriz(uiX, uiY + 24, uiWidth, 0);
         
         surface.drawSprite(uiX + 30, uiY, spriteMedia + 30); // back
         surface.drawSprite(uiX + 60, uiY, spriteMedia + 28); // pause
@@ -2303,17 +2305,14 @@ public class mudclient extends Shell {
         return super.createImage(i, j);
     }
 
-    private void walkToWallObject(int i, int j, int k) {
+    private boolean walkToWallObject(int i, int j, int k) {
         if (k == 0) {
-            walkToActionSource(localRegionX, localRegionY, i, j - 1, i, j, false, true);
-            return;
+            return walkToActionSource(localRegionX, localRegionY, i, j - 1, i, j, false, true);
         }
         if (k == 1) {
-            walkToActionSource(localRegionX, localRegionY, i - 1, j, i, j, false, true);
-            return;
+            return walkToActionSource(localRegionX, localRegionY, i - 1, j, i, j, false, true);
         } else {
-            walkToActionSource(localRegionX, localRegionY, i, j, i, j, true, true);
-            return;
+            return walkToActionSource(localRegionX, localRegionY, i, j, i, j, true, true);
         }
     }
 
@@ -3126,7 +3125,7 @@ public class mudclient extends Shell {
         byte y = 36;
         controlListMagic = panelMagic.addTextListInteractive(x, y + 24, 196, 90, 1, 500, true);
         panelMusic = new Menu(surface, 5);
-        controlListMusic = panelMusic.addTextListInteractive(x, y, 196, 166, 1, 2000, true);
+        controlListMusic = panelMusic.addTextListInteractive(x, y + 24, 196, 166 - 24, 1, 2000, true);
         panelQuestList = new Menu(surface, 5);
         controlListQuest = panelQuestList.addTextListInteractive(x, y + 24, 196, 251, 1, 500, true);
         //
@@ -3929,7 +3928,6 @@ public class mudclient extends Shell {
                 drawLoginScreens();
                 if(musicPlayer.isRunning()) {
                     musicPlayer.stop();
-                    musicLoop = true;
                 }
             } else if (loggedIn == 1) {
                 surface.loggedIn = true;
@@ -3960,12 +3958,11 @@ public class mudclient extends Shell {
         }
     }
 
-    private void walkToGroundItem(int i, int j, int k, int l, boolean walkToAction) {
+    private boolean walkToGroundItem(int i, int j, int k, int l, boolean walkToAction) {
         if (walkTo(i, j, k, l, k, l, false, walkToAction)) {
-            return;
+            return true;
         } else {
-            walkToActionSource(i, j, k, l, k, l, true, walkToAction);
-            return;
+            return walkToActionSource(i, j, k, l, k, l, true, walkToAction);
         }
     }
 
@@ -4097,7 +4094,7 @@ public class mudclient extends Shell {
         }
     }
 
-    private void walkToObject(int x, int y, int id, int index) {
+    private boolean walkToObject(int x, int y, int id, int index) {
         int w;
         int h;
         if (id == 0 || id == 4) {
@@ -4122,9 +4119,9 @@ public class mudclient extends Shell {
                 y--;
                 h++;
             }
-            walkToActionSource(localRegionX, localRegionY, x, y, (x + w) - 1, (y + h) - 1, false, true);
+            return walkToActionSource(localRegionX, localRegionY, x, y, (x + w) - 1, (y + h) - 1, false, true);
         } else {
-            walkToActionSource(localRegionX, localRegionY, x, y, (x + w) - 1, (y + h) - 1, true, true);
+            return walkToActionSource(localRegionX, localRegionY, x, y, (x + w) - 1, (y + h) - 1, true, true);
         }
     }
 
@@ -4218,9 +4215,9 @@ public class mudclient extends Shell {
         }
         y += 15;
         if (musicLoop) {
-            surface.drawString("Music loop - @red@Off", x, y, 1, 0xffffff);
-        } else {
             surface.drawString("Music loop - @gre@On", x, y, 1, 0xffffff);
+        } else {
+            surface.drawString("Music loop - @red@Off", x, y, 1, 0xffffff);
         }
         y += 15;
         y += 5;
@@ -4486,14 +4483,22 @@ public class mudclient extends Shell {
         }
         // INVENTORY USE WITH GROUND ITEM
         if (mitemid == 210) {
-            walkToGroundItem(localRegionX, localRegionY, mx, my, true);
-            ActionManager.get(InventoryUseOnGroundItemHandler.class).handleInventoryUseOnGroundItem(mx + regionX, my + regionY, msrcidx, midx);
+            boolean canReach = walkToGroundItem(localRegionX, localRegionY, mx, my, true);
+            if(canReach) {
+                ActionManager.get(InventoryUseOnGroundItemHandler.class).handleInventoryUseOnGroundItem(mx + regionX, my + regionY, msrcidx, midx);
+            } else {
+                player.message("You cannot reach this item");
+            }
             selectedItemInventoryIndex = -1;
         }
         // PICKUP GROUND ITEM
         if (mitemid == 220) {
-            walkToGroundItem(localRegionX, localRegionY, mx, my, true);
-            ActionManager.get(PickupHandler.class).handlePickup(mx + regionX, my + regionY, midx);
+            boolean canReach = walkToGroundItem(localRegionX, localRegionY, mx, my, true);
+            if(canReach) {
+                ActionManager.get(PickupHandler.class).handlePickup(mx + regionX, my + regionY, midx);
+            } else {
+                player.message("You cannot reach this item");
+            }
         }
         // EXAMINE GROUND ITEM
         if (mitemid == 3200) {
@@ -4512,14 +4517,22 @@ public class mudclient extends Shell {
         }
         // INVENTORY USE WITH WALL OBJECT
         if (mitemid == 310) {
-            walkToWallObject(mx, my, midx);
-            ActionManager.get(InventoryUseOnDoorHandler.class).handleInventoryUseOnDoor(msrcidx, mx + regionX, my + regionY);
+            boolean canReach = walkToWallObject(mx, my, midx);
+            if(canReach) {
+                ActionManager.get(InventoryUseOnDoorHandler.class).handleInventoryUseOnDoor(msrcidx, mx + regionX, my + regionY);
+            } else {
+                player.message("You cannot reach this door");
+            }
             selectedItemInventoryIndex = -1;
         }
         // WALL OBJECT COMMAND 1
         if (mitemid == 320) {
-            walkToWallObject(mx, my, midx);
-            ActionManager.get(DoorActionHandler.class).handleDoor(mx + regionX, my + regionY, true);
+            boolean canReach = walkToWallObject(mx, my, midx);
+            if(canReach) {
+                ActionManager.get(DoorActionHandler.class).handleDoor(mx + regionX, my + regionY, true);
+            } else {
+                player.message("You cannot reach this door");
+            }
         }
         // WALL OBJECT COMMAND 2
         if (mitemid == 2300) { // second door command
@@ -4542,19 +4555,31 @@ public class mudclient extends Shell {
         }
         // INVENTORY USE WITH OBJECT
         if (mitemid == 410) {
-            walkToObject(mx, my, midx, msrcidx);
-            ActionManager.get(InventoryUseOnObjectHandler.class).handleInventoryUseOnObject(mtargetindex, mx + regionX, my + regionY);
+            boolean canReach = walkToObject(mx, my, midx, msrcidx);
+            if(canReach) {
+                ActionManager.get(InventoryUseOnObjectHandler.class).handleInventoryUseOnObject(mtargetindex, mx + regionX, my + regionY);
+            } else {
+                player.message("You cannot reach this object");
+            }
             selectedItemInventoryIndex = -1;
         }
         // OBJECT COMMAND 1
         if (mitemid == 420) {
-            walkToObject(mx, my, midx, msrcidx);
-            ActionManager.get(ObjectActionHandler.class).handleObjectAction(mx + regionX, my + regionY, true);
+            boolean canReach = walkToObject(mx, my, midx, msrcidx);
+            if(canReach) {
+                ActionManager.get(ObjectActionHandler.class).handleObjectAction(mx + regionX, my + regionY, true);
+            } else {
+                player.message("You cannot reach this object");
+            }
         }
         // OBJECT COMMAND 2
         if (mitemid == 2400) {
-            walkToObject(mx, my, midx, msrcidx);
-            ActionManager.get(ObjectActionHandler.class).handleObjectAction(mx + regionX, my + regionY, false);
+            boolean canReach = walkToObject(mx, my, midx, msrcidx);
+            if(canReach) {
+                ActionManager.get(ObjectActionHandler.class).handleObjectAction(mx + regionX, my + regionY, false);
+            } else {
+                player.message("You cannot reach this object");
+            }
         }
         // EXAMINE OBJECT
         if (mitemid == 3400) {
@@ -4611,30 +4636,46 @@ public class mudclient extends Shell {
         if (mitemid == 710) {
             int i2 = (mx - 64) / magicLoc;
             int i4 = (my - 64) / magicLoc;
-            walkToActionSource(localRegionX, localRegionY, i2, i4, true);
-            ActionManager.get(InventoryUseOnNPCHandler.class).handleInventoryUseOnNPC(midx, msrcidx);
+            boolean canReach = walkToActionSource(localRegionX, localRegionY, i2, i4, true);
+            if(canReach) {
+                ActionManager.get(InventoryUseOnNPCHandler.class).handleInventoryUseOnNPC(midx, msrcidx);
+            } else {
+                player.message("You cannot reach this npc");
+            }
             selectedItemInventoryIndex = -1;
         }
         // TALK TO NPC
         if (mitemid == 720) {
             int j2 = (mx - 64) / magicLoc;
             int j4 = (my - 64) / magicLoc;
-            walkToActionSource(localRegionX, localRegionY, j2, j4, true);
-            ActionManager.get(NPCHandler.class).handleTalk(midx);
+            boolean canReach = walkToActionSource(localRegionX, localRegionY, j2, j4, true);
+            if(canReach) {
+                ActionManager.get(NPCHandler.class).handleTalk(midx);
+            } else {
+                player.message("You cannot reach this npc");
+            }
         }
         // NPC COMMAND
         if (mitemid == 725) {
             int k2 = (mx - 64) / magicLoc;
             int k4 = (my - 64) / magicLoc;
-            walkToActionSource(localRegionX, localRegionY, k2, k4, true);
-            ActionManager.get(NPCHandler.class).handleCommand(midx);
+            boolean canReach = walkToActionSource(localRegionX, localRegionY, k2, k4, true);
+            if(canReach) {
+                ActionManager.get(NPCHandler.class).handleCommand(midx);
+            } else {
+                player.message("You cannot reach this npc");
+            }
         }
         // ATTACK NPC
         if (mitemid == 715 || mitemid == 2715) {
             int l2 = (mx - 64) / magicLoc;
             int l4 = (my - 64) / magicLoc;
-            walkToActionSource(localRegionX, localRegionY, l2, l4, true);
-            ActionManager.get(NPCHandler.class).handleAttack(midx);
+            boolean canReach = walkToActionSource(localRegionX, localRegionY, l2, l4, true);
+            if(canReach) {
+                ActionManager.get(NPCHandler.class).handleAttack(midx);
+            } else {
+                player.message("You cannot reach this npc");
+            }
         }
         // EXAMINE NPC
         if (mitemid == 3700) {
