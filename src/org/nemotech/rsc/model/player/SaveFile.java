@@ -36,7 +36,7 @@ public class SaveFile implements Serializable {
         applicationHeight = Constants.APPLICATION_HEIGHT;
     }
     
-    public String pasword = "deprecated";
+    public String password = "deprecated";
     public boolean admin;
     public int x, y;
     public int fatigue;
