@@ -30,7 +30,9 @@ public class SaveFile implements Serializable {
         x = 217; y = 744; // starting player coordinates
         quests = new int[50];
         appearance = new int[6];
-        gameSettings = new boolean[4];
+        gameSettings = new boolean[5];
+        gameSettings[3] = true;
+        gameSettings[4] = true;
         male = true;
         applicationWidth = Constants.APPLICATION_WIDTH;
         applicationHeight = Constants.APPLICATION_HEIGHT;
