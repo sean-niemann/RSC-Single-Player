@@ -945,7 +945,6 @@ public final class Player extends Mob {
         if(getLastLogin() == 0) {
             setChangingAppearance(true);
             getSender().sendAppearanceScreen();
-            mudclient.getInstance().getMusicPlayer().start("newbie_melody.midi");
         }
         setLastLogin(System.currentTimeMillis());
         getSender().sendLoginBox();
