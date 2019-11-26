@@ -23,7 +23,7 @@ public class UpdateManager {
         } catch(ReflectiveOperationException e) {
             e.printStackTrace();
         }
-        System.out.println("\t[Update Manager] Loaded " + count + " entity updaters");
+        System.out.println("\t[Update Manager] Loaded " + count + " entity updaters\n");
     }
     
     private void add(Updater updater) {
