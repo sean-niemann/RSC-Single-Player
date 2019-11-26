@@ -2747,6 +2747,7 @@ public class mudclient extends Shell {
         int ay = regionY;
         int sectionX = (lx + 24) / 48;
         int sectionY = (ly + 24) / 48;
+        
         lastHeightOffset = planeIndex;
         regionX = sectionX * 48 - 48;
         regionY = sectionY * 48 - 48;
@@ -5415,7 +5416,7 @@ public class mudclient extends Shell {
             case 50:
                 resetGame();
                 application.setResizable(true);
-                application.setSize(tempDimension == null ? player.preferredDimension : tempDimension);
+                // removed temp: application.setSize(tempDimension == null ? player.preferredDimension : tempDimension);
                 application.setLocationRelativeTo(null);
                 break;
             case 1:
