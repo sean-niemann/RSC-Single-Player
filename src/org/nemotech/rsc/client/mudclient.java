@@ -209,6 +209,7 @@ public class mudclient extends Shell {
     public int deathScreenTimeout;
     public boolean optionSoundDisabled;
     public boolean musicLoop;
+    public boolean musicAuto;
     private boolean showRightClickMenu;
     private int cameraRotationY;
     private int cameraRotationYIncrement;
@@ -484,6 +485,7 @@ public class mudclient extends Shell {
         cameraAngle = 1;
         optionSoundDisabled = false;
         musicLoop = true;
+        musicAuto = true;
         showRightClickMenu = false;
         cameraRotationYIncrement = 2;
         objectAlreadyInMenu = new boolean[objectsMax];
@@ -886,7 +888,6 @@ public class mudclient extends Shell {
     }
 
     protected void resetGame() {
-        combatStyle = 0;
         logoutTimeout = 0;
         loginScreen = 0;
         loggedIn = 1;
@@ -4191,8 +4192,8 @@ public class mudclient extends Shell {
         int uiY = 36;
         surface.drawSprite(uiX - 49, 3, spriteMedia + 6);
         int uiWidth = 196;
-        surface.drawBoxAlpha(uiX, 36, uiWidth, 81, Surface.rgb2long(181, 181, 181), 160);
-        surface.drawBoxAlpha(uiX, 81 + 36, uiWidth, 40, Surface.rgb2long(201, 201, 201), 160);
+        surface.drawBoxAlpha(uiX, 36, uiWidth, 96, Surface.rgb2long(181, 181, 181), 160);
+        surface.drawBoxAlpha(uiX, 132, uiWidth, 40, Surface.rgb2long(201, 201, 201), 160);
         int x = uiX + 3;
         int y = uiY + 15;
         surface.drawString("Game options - click to toggle", x, y, 1, 0);
@@ -4219,6 +4220,12 @@ public class mudclient extends Shell {
             surface.drawString("Music loop - @gre@On", x, y, 1, 0xffffff);
         } else {
             surface.drawString("Music loop - @red@Off", x, y, 1, 0xffffff);
+        }
+        y += 15;
+        if (musicAuto) {
+            surface.drawString("Regional Music - @gre@On", x, y, 1, 0xffffff);
+        } else {
+            surface.drawString("Regional Music - @red@Off", x, y, 1, 0xffffff);
         }
         y += 15;
         y += 5;
@@ -4257,6 +4264,10 @@ public class mudclient extends Shell {
             j1 += 15;
             if (super.mouseX > l && super.mouseX < l + c1 && super.mouseY > j1 - 12 && super.mouseY < j1 + 4 && mouseButtonClick == 1) {
                 musicLoop = !musicLoop;
+            }
+            j1 += 15;
+            if (super.mouseX > l && super.mouseX < l + c1 && super.mouseY > j1 - 12 && super.mouseY < j1 + 4 && mouseButtonClick == 1) {
+                musicAuto = !musicAuto;
             }
             j1 += 35;
             if (super.mouseX > l && super.mouseX < l + c1 && super.mouseY > j1 - 12 && super.mouseY < j1 + 4 && mouseButtonClick == 1) {
