@@ -87,7 +87,7 @@ public abstract class Shell extends Panel implements Runnable, MouseListener, Mo
     }
 
     public void start() {
-        System.out.println("\t[Classic Client] Loading process started...");
+        System.out.println("[Classic Client] Loading process started...");
         panelWidth = Constants.APPLICATION_WIDTH;
         panelHeight = Constants.APPLICATION_HEIGHT;
         application = new Application(this);
@@ -250,6 +250,7 @@ public abstract class Shell extends Panel implements Runnable, MouseListener, Mo
         if(musicPlayer.isRunning()) {
             musicPlayer.stop();
         }
+        musicPlayer.close();
         if(application != null) {
             application.dispose();
         }
