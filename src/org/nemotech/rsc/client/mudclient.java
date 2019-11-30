@@ -208,8 +208,8 @@ public class mudclient extends Shell {
     private int anInt707;
     public int deathScreenTimeout;
     public boolean optionSoundDisabled;
-    public boolean musicLoop;
-    public boolean musicAuto;
+    public boolean optionMusicLoop;
+    public boolean optionMusicAuto;
     private boolean showRightClickMenu;
     private int cameraRotationY;
     private int cameraRotationYIncrement;
@@ -484,8 +484,8 @@ public class mudclient extends Shell {
         loginUser = "";
         cameraAngle = 1;
         optionSoundDisabled = false;
-        musicLoop = true;
-        musicAuto = true;
+        optionMusicLoop = true;
+        optionMusicAuto = true;
         showRightClickMenu = false;
         cameraRotationYIncrement = 2;
         objectAlreadyInMenu = new boolean[objectsMax];
@@ -888,6 +888,7 @@ public class mudclient extends Shell {
     }
 
     protected void resetGame() {
+        musicPlayer = new MusicPlayer();
         logoutTimeout = 0;
         loginScreen = 0;
         loggedIn = 1;
@@ -998,20 +999,20 @@ public class mudclient extends Shell {
         panelMusic.clearList(controlListMusic);
         File musicFolder = new File(Constants.CACHE_DIRECTORY + "audio/music");
         FilenameFilter filter = (File dir, String name) -> {
-            return name.endsWith(".midi");
+            return name.endsWith(".mid");
         };
         File[] songFiles = musicFolder.listFiles(filter);
         Arrays.sort(songFiles);
         for(int i = 0; i < songFiles.length; i++) {
-            panelMusic.addListEntry(controlListMusic, i, Util.capitalizeWord(songFiles[i].getName().replace(".midi", "").replace("_", " ")));
+            panelMusic.addListEntry(controlListMusic, i, Util.capitalizeWord(songFiles[i].getName().replace(".mid", "").replace("_", " ")));
         }
         panelMusic.drawPanel();
         String s = (selectedSong != null) ? selectedSong : musicPlayer.getCurrentSong();
         if(musicPlayer.isRunning()) {
-            String song = Util.capitalizeWord(s.replace(".midi", "").replace("_", " "));
+            String song = Util.capitalizeWord(s.replace(".mid", "").replace("_", " "));
             surface.drawStringCenter("Playing: " + song, uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.GREEN2);
         } else if(musicPlayer.isPaused()) {
-            String song = Util.capitalizeWord(s.replace(".midi", "").replace("_", " "));
+            String song = Util.capitalizeWord(s.replace(".mid", "").replace("_", " "));
             surface.drawStringCenter("Paused: " + song, uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.YELLOW);
         } else {
             surface.drawStringCenter("No song currently selected", uiX + uiWidth / 2, (uiY + uiHeight) - 3, 1, Colors.RED);
@@ -1650,6 +1651,7 @@ public class mudclient extends Shell {
             int l3 = objectX[k2];
             int l4 = objectY[k2];
             if (l3 >= 0 && l4 >= 0 && l3 < 96 && l4 < 96 && objectID[k2] == 74) { /* rotates the windmill sails */
+                //objectModel[k2].rotate((int) (Math.random() * 10), (int) (Math.random() * 10), (int) (Math.random() * 10));
                 objectModel[k2].rotate(1, 0, 0);
             }
         }
@@ -1821,8 +1823,8 @@ public class mudclient extends Shell {
         panel.addListEntry("", control);
         panel.addListEntry("RSC Single Player is a one player RuneScape Classic clone. No need", control);
         panel.addListEntry("for any sort of internet connection what-so-ever to play this game.", control);
-        panel.addListEntry("This is essentially a heavily modified ProjectRSC base, with stripped", control);
-        panel.addListEntry("networking and packet handling. It has taken me almost 6 months to", control);
+        panel.addListEntry("This is essentially a heavily modified RSCL base, with stripped", control);
+        panel.addListEntry("networking and packet handling. It had taken me nearly 6 months to", control);
         panel.addListEntry("complete this and create new loading routines, however it is finally", control);
         panel.addListEntry("fully functional. The client handles itself and uses no server.", control);
         panel.addListEntry("", control);
@@ -3154,11 +3156,10 @@ public class mudclient extends Shell {
         loadSounds();
         if(!errorLoadingData) {
             showLoadingProgress(100, "Starting game...");
-            //
             resetLoginScreenVariables();
             renderLoginScreenViewports();
         }
-        //System.out.println("\t[Classic Client] Loading process finished!\n");
+        //System.out.println("[Classic Client] Loading process finished!\n");
         //System.out.println("Console:");
         //System.out.println("____________________________________________________________");
     }
@@ -3753,7 +3754,6 @@ public class mudclient extends Shell {
 
     private void loadSounds() {
         showLoadingProgress(90, "Loading sounds");
-        musicPlayer = new MusicPlayer();
         SoundEffect.init();
     }
 
@@ -3842,7 +3842,7 @@ public class mudclient extends Shell {
             animIndex += 27;
         }
 
-        System.out.println("\t[Classic Client] Loaded " + frameCount + " frames of animation");
+        System.out.println("[Classic Client] Loaded " + frameCount + " frames of animation");
     }
 
     private void handleAppearancePanelControls() {
@@ -3928,7 +3928,7 @@ public class mudclient extends Shell {
             if (loggedIn == 0) {
                 surface.loggedIn = false;
                 drawLoginScreens();
-                if(musicPlayer.isRunning()) {
+                if(musicPlayer != null && musicPlayer.isRunning()) {
                     musicPlayer.stop();
                 }
             } else if (loggedIn == 1) {
@@ -4216,13 +4216,13 @@ public class mudclient extends Shell {
             surface.drawString("Sound effects - @gre@On", x, y, 1, 0xffffff);
         }
         y += 15;
-        if (musicLoop) {
+        if (optionMusicLoop) {
             surface.drawString("Music loop - @gre@On", x, y, 1, 0xffffff);
         } else {
             surface.drawString("Music loop - @red@Off", x, y, 1, 0xffffff);
         }
         y += 15;
-        if (musicAuto) {
+        if (optionMusicAuto) {
             surface.drawString("Regional Music - @gre@On", x, y, 1, 0xffffff);
         } else {
             surface.drawString("Regional Music - @red@Off", x, y, 1, 0xffffff);
@@ -4263,11 +4263,13 @@ public class mudclient extends Shell {
             }
             j1 += 15;
             if (super.mouseX > l && super.mouseX < l + c1 && super.mouseY > j1 - 12 && super.mouseY < j1 + 4 && mouseButtonClick == 1) {
-                musicLoop = !musicLoop;
+                optionMusicLoop = !optionMusicLoop;
+                player.setGameSetting(3, optionMusicLoop);
             }
             j1 += 15;
             if (super.mouseX > l && super.mouseX < l + c1 && super.mouseY > j1 - 12 && super.mouseY < j1 + 4 && mouseButtonClick == 1) {
-                musicAuto = !musicAuto;
+                optionMusicAuto = !optionMusicAuto;
+                player.setGameSetting(4, optionMusicAuto);
             }
             j1 += 35;
             if (super.mouseX > l && super.mouseX < l + c1 && super.mouseY > j1 - 12 && super.mouseY < j1 + 4 && mouseButtonClick == 1) {
