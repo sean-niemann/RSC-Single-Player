@@ -270,8 +270,8 @@ public final class PluginManager {
                 }
             }
         }
-        System.out.println("\t[Plugin Manager] Loaded " + World.getWorld().getQuests().size() + " quests");
-        System.out.println("\t[Plugin Manager] Loaded " + loadedPlugins.size() + " plugins");
+        System.out.println("[Plugin Manager] Loaded " + World.getWorld().getQuests().size() + " quests");
+        System.out.println("[Plugin Manager] Loaded " + loadedPlugins.size() + " plugins");
     }
     
 }
