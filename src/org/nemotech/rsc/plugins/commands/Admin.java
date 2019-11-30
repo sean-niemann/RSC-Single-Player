@@ -19,7 +19,6 @@ import org.nemotech.rsc.model.player.states.CombatState;
 import org.nemotech.rsc.util.Formulae;
 import org.nemotech.rsc.plugins.Plugin;
 import org.nemotech.rsc.client.action.impl.WieldHandler;
-import org.nemotech.rsc.client.mudclient;
 import org.nemotech.rsc.external.definition.DoorDef;
 import org.nemotech.rsc.external.definition.GameObjectDef;
 import org.nemotech.rsc.external.definition.ItemDef;
@@ -353,9 +352,9 @@ public class Admin extends Plugin implements CommandListener {
             return;
         }
         
-        if(command.equals("teleport")) {
+        if(command.equals("teleport") || command.equals("tele")) {
             if(args.length != 2) {
-                player.getSender().sendMessage("Syntax: ::teleport <x> <y>");
+                player.getSender().sendMessage("Syntax: ::tele <x> <y>");
                 return;
             }
             int x = Integer.parseInt(args[0]);
