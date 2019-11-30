@@ -333,13 +333,13 @@ public class World {
     public void registerNpc(NPC n) {
         NPCLoc npc = n.getLoc();
         if (npc.startX < npc.minX || npc.startX > npc.maxX || npc.startY < npc.minY || npc.startY > npc.maxY) {
-            System.out.println("[NPC Registrar] Impossible coordinate range: [ID:" + npc.id + " X:" + npc.startX + " Y:" + npc.startY + "]");
+            System.out.println("\t[NPC Registrar] Impossible coordinate range: [ID:" + npc.id + " X:" + npc.startX + " Y:" + npc.startY + "]");
         }
         if((getTileValue(npc.startX, npc.startY).mapValue & 64) != 0) {
-            System.out.println("[NPC Registrar] Starting coordinates are unwalkable: [ID:" + npc.id + " X:" + npc.startX + " Y:" + npc.startY + "]");
+            System.out.println("\t[NPC Registrar] Starting coordinates are unwalkable: [ID:" + npc.id + " X:" + npc.startX + " Y:" + npc.startY + "]");
         }
         if((getTileValue(npc.startX, npc.startY).mapValue & 64) != 0) {
-            System.out.println("[NPC Registrar] Starting coordinates are on an object: [ID:" + npc.id + " X:" + npc.startX + " Y:" + npc.startY + "]");
+            System.out.println("\t[NPC Registrar] Starting coordinates are on an object: [ID:" + npc.id + " X:" + npc.startX + " Y:" + npc.startY + "]");
         }
         npcs.add(n);
     }
