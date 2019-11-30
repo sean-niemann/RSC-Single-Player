@@ -8,6 +8,7 @@ import java.util.Map;
 import org.nemotech.rsc.external.definition.*;
 import org.nemotech.rsc.external.definition.extra.*;
 import org.nemotech.rsc.external.location.*;
+import org.nemotech.rsc.model.Point;
 
 /**
  * This class handles the loading of entities from the cache files,
@@ -30,6 +31,8 @@ public class EntityManager {
     private static GameObjectLoc[] objectLocs;
     private static ItemLoc[] itemLocs;
     private static NPCLoc[] npcLocs;
+    
+    private static TelePoint[] telePoints;
     
     private static ItemCraftingDef[] itemCrafting;
     private static Map<Integer, ObjectFishingDef[]> objectFishing;
@@ -61,6 +64,7 @@ public class EntityManager {
             objectLocs = loader.loadGameObjectLocs();
             itemLocs = loader.loadItemLocs();
             npcLocs = loader.loadNPCLocs();
+            telePoints = loader.loadTelePoints();
             doors = loader.loadDoorDefs();
             objects = loader.loadGameObjectDefs();
             models = new ArrayList<>();
@@ -203,6 +207,17 @@ public class EntityManager {
     public static NPCLoc[] getNPCLocs() {
         return npcLocs;
     }
+    
+    public static TelePoint getTelePoint(Point location) {
+		int x1 = location.getX();
+        int y1 = location.getY();
+        for(TelePoint telePoint : telePoints) {
+            if(telePoint.x1 == x1 && telePoint.y1 == y1) {
+                return telePoint;
+            }
+        }
+        return null;
+	}
     
     public static CerterDef getCerterDef(int id) {
         return certers.get(id);
