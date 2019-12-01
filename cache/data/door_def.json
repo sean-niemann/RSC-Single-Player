@@ -1737,6 +1737,7 @@
 	{
 		"id": 148,
 		"name": "magic portal",
+		"description": "I wonder where this will take me",
 		"command1": "enter",
 		"command2": "Examine",
 		"type": 1,
@@ -1748,6 +1749,7 @@
 	{
 		"id": 149,
 		"name": "magic portal",
+		"description": "I wonder where this will take me",
 		"command1": "enter",
 		"command2": "Examine",
 		"type": 1,
@@ -1759,6 +1761,7 @@
 	{
 		"id": 150,
 		"name": "magic portal",
+		"description": "I wonder where this will take me",
 		"command1": "enter",
 		"command2": "Examine",
 		"type": 1,

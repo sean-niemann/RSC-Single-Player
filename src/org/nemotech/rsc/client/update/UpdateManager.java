@@ -16,14 +16,14 @@ public class UpdateManager {
         try {
             for(Class<?> class_ : Util.loadClasses(PACKAGE_NAME)) {
                 if(!class_.getName().contains("$")) {
-                    add((Updater) class_.newInstance());
+                    add((Updater) class_.getDeclaredConstructor().newInstance());
                     count++;
                 }
             }
         } catch(ReflectiveOperationException e) {
             e.printStackTrace();
         }
-        System.out.println("\t[Update Manager] Loaded " + count + " entity updaters\n");
+        System.out.println("[Update Manager] Loaded " + count + " entity updaters");
     }
     
     private void add(Updater updater) {

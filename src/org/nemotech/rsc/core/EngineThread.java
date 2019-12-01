@@ -1,13 +1,12 @@
 package org.nemotech.rsc.core;
 
-import org.nemotech.rsc.event.DelayedEvent;
-import org.nemotech.rsc.model.player.Player;
-
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.nemotech.rsc.event.DelayedEvent;
+import org.nemotech.rsc.model.player.Player;
 import org.nemotech.rsc.client.mudclient;
-import org.nemotech.rsc.model.Point;
 import org.nemotech.rsc.model.Point3D;
 import org.nemotech.rsc.model.World;
 
@@ -75,13 +74,13 @@ public class EngineThread extends Thread {
         int x = player.getX();
         int y = player.getY();
         Point3D sector = getSectorFromCoords(x, y);
-        if(!mudclient.getInstance().musicAuto) {
+        if(!mudclient.getInstance().optionMusicAuto) {
             return;
         }
         if(!currentSector.equals(sector)) {
             currentSector = sector;
             String song = getSongBySector(currentSector);
-            if(song != null && !song.endsWith("null.midi")) {
+            if(song != null && !song.endsWith("null.mid")) {
                 // prevent starting the same song over again (if the player went downstairs and back upstairs, etc)
                 if(!song.equals(mudclient.getInstance().getMusicPlayer().getCurrentSong())) {
                     mudclient.getInstance().getMusicPlayer().start(song);
@@ -148,7 +147,7 @@ public class EngineThread extends Thread {
     }};
     
     private String getSongBySector(Point3D sector) {
-        return musicMap.get(sector) + ".midi";
+        return musicMap.get(sector) + ".mid";
     }
     
     private Point3D getSectorFromCoords(int x, int y) {

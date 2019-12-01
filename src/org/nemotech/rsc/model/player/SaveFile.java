@@ -31,8 +31,8 @@ public class SaveFile implements Serializable {
         quests = new int[50];
         appearance = new int[6];
         gameSettings = new boolean[5];
-        gameSettings[3] = true;
-        gameSettings[4] = true;
+        gameSettings[3] = true; // music loop
+        gameSettings[4] = true; // music auto
         male = true;
         applicationWidth = Constants.APPLICATION_WIDTH;
         applicationHeight = Constants.APPLICATION_HEIGHT;

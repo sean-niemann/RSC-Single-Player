@@ -145,7 +145,8 @@ public class MiscUpdater extends Updater {
         mc.optionMouseButtonOne = player.getGameSetting(0);
         mc.optionCameraModeAuto = player.getGameSetting(1);
         mc.optionSoundDisabled = player.getGameSetting(2);
-        mc.musicLoop = player.getGameSetting(3);
+        mc.optionMusicLoop = player.getGameSetting(3);
+        mc.optionMusicAuto = player.getGameSetting(4);
     }
     
     public void sendCombatStyle() {

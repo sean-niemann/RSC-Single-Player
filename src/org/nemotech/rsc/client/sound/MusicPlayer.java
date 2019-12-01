@@ -32,7 +32,7 @@ public class MusicPlayer {
             sequencer.addMetaEventListener((MetaMessage event) -> {
                 /* done playing */
                 if(event.getType() == 47) {
-                    if(mudclient.getInstance().musicLoop) {
+                    if(mudclient.getInstance().optionMusicLoop) {
                         startRandom();
                     } else {
                         currentSong = null;
@@ -66,7 +66,7 @@ public class MusicPlayer {
     public void startRandom() {
         File directory = new File(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator);
         FilenameFilter filter = (File dir, String name) -> {
-            return name.endsWith(".midi");
+            return name.endsWith(".mid");
         };
         File[] musicFiles = directory.listFiles(filter);
         String fileName = musicFiles[Util.random(musicFiles.length - 1)].getName();
@@ -74,13 +74,14 @@ public class MusicPlayer {
     }
     
     public void start(String fileName) {
-        new Thread(() -> {
+        new Thread(() -> { 
             try {
                 File directory = new File(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator);
                 InputStream is = new BufferedInputStream(new FileInputStream(directory.getAbsolutePath() + File.separator + fileName));
                 sequencer.setSequence(is);
                 currentSong = fileName;
                 mudclient.getInstance().selectedSong = fileName;
+                System.out.println("Now playing: " + currentSong);
             } catch(IOException | InvalidMidiDataException e) {
                 e.printStackTrace();
             }
@@ -94,6 +95,10 @@ public class MusicPlayer {
     
     public boolean isRunning() {
         return sequencer.isRunning();
+    }
+    
+    public void close() {
+        sequencer.close();
     }
 
 }

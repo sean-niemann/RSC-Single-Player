@@ -18,7 +18,7 @@ public class ClientUpdater {
         if(player != null && player.isLoggedIn()) {
             updateNpcPositions();
             updatePlayersPositions();
-            updateTimeouts(player);
+            //updateTimeouts(player);
             
             // entity positions 
             UpdateManager.get(PlayerUpdater.class).handlePositionUpdate(player);

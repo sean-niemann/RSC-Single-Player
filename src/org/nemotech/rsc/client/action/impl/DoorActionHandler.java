@@ -9,6 +9,8 @@ import org.nemotech.rsc.event.WalkToPointEvent;
 import org.nemotech.rsc.plugins.PluginManager;
 import org.nemotech.rsc.model.player.states.Action;
 import org.nemotech.rsc.client.action.ActionHandler;
+import org.nemotech.rsc.external.EntityManager;
+import org.nemotech.rsc.external.location.TelePoint;
 
 public class DoorActionHandler implements ActionHandler {
 
@@ -36,6 +38,16 @@ public class DoorActionHandler implements ActionHandler {
 
                 owner.reset();
                 String command = (first ? def.getCommandFirst() : def.getCommandSecond()).toLowerCase();
+                
+                TelePoint telePoint = EntityManager.getTelePoint(door.getLocation());
+                if(telePoint != null) {
+                    owner.teleport(telePoint.x2, telePoint.y2, false);
+                    if(!telePoint.message.isEmpty()) {
+                        owner.message(telePoint.message);
+                    }
+                    return;
+                }
+                
                 int click = 0;
                 if(!first) click = 1;
 

@@ -9,6 +9,8 @@ import org.nemotech.rsc.event.WalkToObjectEvent;
 import org.nemotech.rsc.plugins.PluginManager;
 import org.nemotech.rsc.model.player.states.Action;
 import org.nemotech.rsc.client.action.ActionHandler;
+import org.nemotech.rsc.external.EntityManager;
+import org.nemotech.rsc.external.location.TelePoint;
 
 public class ObjectActionHandler implements ActionHandler {
 
@@ -37,6 +39,15 @@ public class ObjectActionHandler implements ActionHandler {
 
                 owner.reset();
                 String command = (first ? def.getFirstCommand() : def.getSecondCommand()).toLowerCase();
+                
+                TelePoint telePoint = EntityManager.getTelePoint(object.getLocation());
+                if(telePoint != null) {
+                    owner.teleport(telePoint.x2, telePoint.y2, false);
+                    if(!telePoint.message.isEmpty()) {
+                        owner.message(telePoint.message);
+                    }
+                    return;
+                }
 
                 if (PluginManager.getInstance().blockDefaultAction("ObjectAction", new Object[] { object, command, owner })) {
                     return;

@@ -1,0 +1,138 @@
+[
+    {
+        "note": "Mage arena ladder",
+        "message": "You climb down the ladder",
+        "x1": 223,
+        "y1": 110,
+        "x2": 446,
+        "y2": 3368
+    },
+    {
+        "note": "Grand tree underground ladder",
+        "message": "You climb up the ladder",
+        "x1": 703,
+        "y1": 3283,
+        "x2": 416,
+        "y2": 162
+    },
+    {
+        "note": "Grand tree upstairs east door (leading out)",
+        "message": "",
+        "x1": 414,
+        "y1": 1107,
+        "x2": 700,
+        "y2": 1395
+    },
+    {
+        "note": "Grand tree upstairs east door (leading in)",
+        "message": "",
+        "x1": 701,
+        "y1": 1395,
+        "x2": 414,
+        "y2": 1107
+    },
+    {
+        "note": "Grand tree upstairs west door (leading out)",
+        "message": "",
+        "x1": 419,
+        "y1": 1107,
+        "x2": 708,
+        "y2": 1395
+    },
+    {
+        "note": "Grand tree upstairs west door (leading in)",
+        "message": "",
+        "x1": 707,
+        "y1": 1395,
+        "x2": 418,
+        "y2": 1107
+    },
+    {
+        "note": "Grand tree 3rd floor west ladder (leading down)",
+        "message": "You climb down the ladder",
+        "x1": 715,
+        "y1": 2337,
+        "x2": 715,
+        "y2": 1393
+    },
+    {
+        "note": "Grand tree 3rd floor east ladder (leading down)",
+        "message": "You climb down the ladder",
+        "x1": 691,
+        "y1": 2339,
+        "x2": 691,
+        "y2": 1393
+    },
+    {
+        "note": "Grand tree 2nd floor east ladder (leading up)",
+        "message": "You climb up the ladder",
+        "x1": 691,
+        "y1": 1394,
+        "x2": 691,
+        "y2": 2338
+    },
+    {
+        "note": "Grand tree 3rd floor south door (leading in)",
+        "message": "",
+        "x1": 703,
+        "y1": 2340,
+        "x2": 416,
+        "y2": 2052
+    },
+    {
+        "note": "Grand tree 3rd floor north door (leading in)",
+        "message": "",
+        "x1": 703,
+        "y1": 2337,
+        "x2": 416,
+        "y2": 2050
+    },
+    {
+        "note": "Grand tree 3rd floor east door (leading in)",
+        "message": "",
+        "x1": 702,
+        "y1": 2338,
+        "x2": 415,
+        "y2": 2051
+    },
+    {
+        "note": "Grand tree 3rd floor west door (leading in)",
+        "message": "",
+        "x1": 705,
+        "y1": 2338,
+        "x2": 417,
+        "y2": 2051
+    },
+    {
+        "note": "Grand tree 3rd floor north door (leading out) [Dest was: 703, 2336]",
+        "message": "The door is locked",
+        "x1": 416,
+        "y1": 2050,
+        "x2": 416,
+        "y2": 2050
+    },
+    {
+        "note": "Grand tree 3rd floor south door (leading out)",
+        "message": "",
+        "x1": 416,
+        "y1": 2053,
+        "x2": 703,
+        "y2": 2340
+    },
+    {
+        "note": "Grand tree 3rd floor west door (leading out)",
+        "message": "",
+        "x1": 418,
+        "y1": 2051,
+        "x2": 705,
+        "y2": 2338
+    },
+    {
+        "note": "Grand tree 3rd floor east door (leading out)",
+        "message": "",
+        "x1": 415,
+        "y1": 2051,
+        "x2": 701,
+        "y2": 2338
+    }
+]

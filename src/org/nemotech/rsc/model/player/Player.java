@@ -442,7 +442,7 @@ public final class Player extends Mob {
     /**
      * Users game settings, camera rotation preference etc
      */
-    private boolean[] gameSettings = new boolean[4];
+    private boolean[] gameSettings = new boolean[5];
     /**
      * Unix time when the player last logged in
      */
@@ -1326,7 +1326,7 @@ public final class Player extends Mob {
     }
     
     public boolean[] getGameSettings() {
-        return new boolean[] { gameSettings[0], gameSettings[1], gameSettings[2], gameSettings[3] };
+        return new boolean[] { gameSettings[0], gameSettings[1], gameSettings[2], gameSettings[3], gameSettings[4] };
     }
 
     public long getLastPing() {

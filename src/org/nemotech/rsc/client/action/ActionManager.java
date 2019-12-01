@@ -16,14 +16,14 @@ public class ActionManager {
         try {
             for(Class<?> class_ : Util.loadClasses(PACKAGE_NAME)) {
                 if(!class_.getName().contains("$")) {
-                    add((ActionHandler) class_.newInstance());
+                    add((ActionHandler) class_.getDeclaredConstructor().newInstance());
                     count++;
                 }
             }
         } catch(ReflectiveOperationException e) {
             e.printStackTrace();
         }
-        System.out.println("\t[Action Manager] Loaded " + count + " action handlers");
+        System.out.println("[Action Manager] Loaded " + count + " action handlers");
     }
     
     public void add(ActionHandler handler) {
