@@ -17,7 +17,6 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
-//import java.util.zip.GZIPInputStream;
 
 /**
  * 
@@ -38,7 +37,6 @@ public class DataLoader {
 
     private <T> T load(String ident, Type type) throws Exception {
         File dataFile = files.get(ident);
-        //BufferedInputStream inputStream = new BufferedInputStream(new GZIPInputStream(new FileInputStream(dataFile)));
         BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(dataFile)); 
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         //System.out.print("loaded: " + ident);
@@ -50,13 +48,14 @@ public class DataLoader {
     }
 
     private File wrap(String file) { // shortens code and helps prevent typos
-        return new File(Constants.CACHE_DIRECTORY + "data" + File.separator, file); // + ".json");
+        return new File(Constants.CACHE_DIRECTORY + "data" + File.separator, file + ".json");
     }
     
     private void populate() {
         addToFileMap("object_loc");
         addToFileMap("item_loc");
         addToFileMap("npc_loc");
+        addToFileMap("tele_points");
         addToFileMap("certer_def");
         addToFileMap("tile_def");
         addToFileMap("elev_def");
@@ -142,6 +141,10 @@ public class DataLoader {
 
     public NPCLoc[] loadNPCLocs() throws Exception {
         return load("npc_loc", new TypeToken<NPCLoc[]>() {}.getType());
+    }
+    
+    public TelePoint[] loadTelePoints() throws Exception {
+        return load("tele_points", new TypeToken<TelePoint[]>() {}.getType());
     }
 
     public Map<Integer, CerterDef> loadCerterDefs() throws Exception {
