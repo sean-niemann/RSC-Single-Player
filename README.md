@@ -11,11 +11,11 @@ RSC Single Player is a one player RuneScape Classic reproduction. The client han
     
 # Game Information
 * Experience modifier is set at 8x
+* All content, including all 50 quests
 * The game can now be resized to your preferred dimensions
 * Music player replaced Social tab
 * Swap bank items by right clicking on the item
 * You can use multiple accounts, but do not use more than one account during the same session (you can have multiple windows open)
-* All content, including all 50 quests
 * Administrator privileges can be acquired by creating a new account with username "root", and also supports right-clicking the mini-map to teleport
 
 # Media
