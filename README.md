@@ -23,7 +23,6 @@ RSC Single Player is a one player RuneScape Classic reproduction. The client han
 ![picture alt](https://nemotech.org/rsc/rsc-1.png "RSCSP1")
 ![picture alt](https://nemotech.org/rsc/rsc-2.png "RSCSP2")
 ![picture alt](https://nemotech.org/rsc/rsc-3.png "RSCSP3")
-![picture alt](https://nemotech.org/rsc/rsc-4.png "RSCSP4")
 
 # Other Information
 
