@@ -74,7 +74,10 @@ public class MusicPlayer {
     }
     
     public void start(String fileName) {
-        if(!sequencer.isOpen()) return;
+        if(!sequencer.isOpen()) {
+            System.out.println("Sequencer not open");
+            return;
+        }
         new Thread(() -> { 
             try {
                 File directory = new File(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator);
