@@ -30,7 +30,7 @@ public class Terrain {
     private Scene camera;
     private boolean requiresClean;
     
-    private Sector[] sectors;
+    public Sector[] sectors;
     
     public Terrain(Scene camera, Surface gameImage) {
         this.camera = camera;

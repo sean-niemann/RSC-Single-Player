@@ -19,8 +19,11 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import org.nemotech.rsc.model.Point3D;
 
 public class mudclient extends Shell {
+    
+    public Point3D currentSector = new Point3D(0, 0, 0);
     
     public mudclient() {
         initVars();
@@ -63,13 +66,13 @@ public class mudclient extends Shell {
         gameHeight = height - 12;
 
         // set raster
-        surface.pixels = new int[width * height];
-        surface.boundsBottomX = surface.width2 = width;
-        surface.boundsBottomY = surface.height2 = height;
+        surface.imagePixelArray = new int[width * height];
+        surface.imageWidth = surface.width2 = width;
+        surface.imageHeight = surface.height2 = height;
         surface.imageConsumer.setDimensions(width, height);
 
         // set scene
-        scene.raster = surface.pixels;
+        scene.raster = surface.imagePixelArray;
         scene.clipX = width;
         scene.clipY = height;
         scene.setBounds(gameWidth / 2, gameHeight / 2, gameWidth / 2, gameHeight / 2, gameWidth, const_9);
@@ -762,7 +765,7 @@ public class mudclient extends Shell {
 
             }
             receivedMessageY[msgidx] = y;
-            surface.drawStringCentered(receivedMessages[msgidx], x, y, 1, 0xffff00, 300);
+            surface.drawStringCenter(receivedMessages[msgidx], x, y, 1, 0xffff00, 300);
         }
 
         for (int itemidx = 0; itemidx < itemsAboveHeadCount; itemidx++) {
@@ -805,8 +808,8 @@ public class mudclient extends Shell {
 
     private void disposeAndCollect() {
         if (surface != null) {
-            surface.clear();
-            surface.pixels = null;
+            surface.cleanupSprites();
+            surface.imagePixelArray = null;
             surface = null;
         }
         if (scene != null) {
@@ -888,7 +891,6 @@ public class mudclient extends Shell {
     }
 
     protected void resetGame() {
-        musicPlayer = new MusicPlayer();
         logoutTimeout = 0;
         loginScreen = 0;
         loggedIn = 1;
@@ -1639,7 +1641,7 @@ public class mudclient extends Shell {
         } else if (mouseClickXStep < 0) {
             mouseClickXStep++;
         }
-        scene.animateTexture(17); /* animates water texture? (fountains, portals, fish, etc) */
+        scene.animateTexture(17); /* animates water/portal textures (fountains, portals, fish, etc) */
         objectAnimationCount++;
         if (objectAnimationCount > 5) {
             objectAnimationCount = 0;
@@ -1670,102 +1672,6 @@ public class mudclient extends Shell {
             }
         }
 
-    }
-
-    private void renderLoginScreenViewports() {
-        int rh = 0;
-        byte rx = 50;
-        byte ry = 50;
-        world.loadSector(rx * 48 + 23, ry * 48 + 23, rh);
-        //world.registerObjectDir(rh, rh, rh);
-        world.loadSectorObjects(gameModels);
-        int x = 9728;
-        int y = 6400;
-        int zoom = 1100;
-        int rotation = 888;
-        scene.clipFar3d = 4100;
-        scene.clipFar2d = 4100;
-        scene.fogZDensity = 1;
-        scene.fogZDistance = 4000;
-        surface.blackScreen();
-        scene.setCamera(x, -world.getAveragedElevation(x, y), y, 912, rotation, 0, zoom * 2);
-        scene.render();
-        surface.fade2black();
-        surface.fade2black();
-        surface.drawBox(0, 0, gameWidth, 6, 0);
-        for (int j = 6; j >= 1; j--) {
-            surface.drawLineAlpha(0, j, 0, j, gameWidth, 8);
-        }
-
-        surface.drawBox(0, 194, gameWidth, 20, 0);
-        for (int k = 6; k >= 1; k--) {
-            surface.drawLineAlpha(0, k, 0, 194 - k, gameWidth, 8);
-        }
-
-        surface.drawSprite(gameWidth / 2 - surface.spriteWidth[spriteMedia + 10] / 2, 15, spriteMedia + 10); // runescape logo
-        surface.drawSpriteClipping(spriteLogo, 0, 0, gameWidth, 200);
-        surface.drawWorld(spriteLogo);
-        x = 9216;
-        y = 9216;
-        zoom = 1100;
-        rotation = 888;
-        scene.clipFar3d = 4100;
-        scene.clipFar2d = 4100;
-        scene.fogZDensity = 1;
-        scene.fogZDistance = 4000;
-        surface.blackScreen();
-        scene.setCamera(x, -world.getAveragedElevation(x, y), y, 912, rotation, 0, zoom * 2);
-        scene.render();
-        surface.fade2black();
-        surface.fade2black();
-        surface.drawBox(0, 0, gameWidth, 6, 0);
-        for (int l = 6; l >= 1; l--) {
-            surface.drawLineAlpha(0, l, 0, l, gameWidth, 8);
-        }
-
-        surface.drawBox(0, 194, gameWidth, 20, 0);
-        for (int i1 = 6; i1 >= 1; i1--) {
-            surface.drawLineAlpha(0, i1, 0, 194 - i1, gameWidth, 8);
-        }
-
-        surface.drawSprite(gameWidth / 2 - surface.spriteWidth[spriteMedia + 10] / 2, 15, spriteMedia + 10);
-        surface.drawSpriteClipping(spriteLogo + 1, 0, 0, gameWidth, 200);
-        surface.drawWorld(spriteLogo + 1);
-
-        for (int j1 = 0; j1 < 64; j1++) {
-            scene.removeModel(world.roofModels[0][j1]);
-            scene.removeModel(world.wallModels[1][j1]);
-            scene.removeModel(world.roofModels[1][j1]);
-            scene.removeModel(world.wallModels[2][j1]);
-            scene.removeModel(world.roofModels[2][j1]);
-        }
-
-        x = 11136;
-        y = 10368;
-        zoom = 500;
-        rotation = 376;
-        scene.clipFar3d = 4100;
-        scene.clipFar2d = 4100;
-        scene.fogZDensity = 1;
-        scene.fogZDistance = 4000;
-        surface.blackScreen();
-        scene.setCamera(x, -world.getAveragedElevation(x, y), y, 912, rotation, 0, zoom * 2);
-        scene.render();
-        surface.fade2black();
-        surface.fade2black();
-        surface.drawBox(0, 0, gameWidth, 6, 0);
-        for (int k1 = 6; k1 >= 1; k1--) {
-            surface.drawLineAlpha(0, k1, 0, k1, gameWidth, 8);
-        }
-
-        surface.drawBox(0, 194, gameWidth, 20, 0);
-        for (int l1 = 6; l1 >= 1; l1--) {
-            surface.drawLineAlpha(0, l1, 0, 194, gameWidth, 8);
-        }
-
-        surface.drawSprite(gameWidth / 2 - surface.spriteWidth[spriteMedia + 10] / 2, 15, spriteMedia + 10);
-        surface.drawSpriteClipping(spriteMedia + 10, 0, 0, gameWidth, 200);
-        surface.drawWorld(spriteMedia + 10);
     }
 
     public void createLoginPanels() {
@@ -2243,9 +2149,9 @@ public class mudclient extends Shell {
                 }
                 if (i2 != 5 || EntityManager.getAnimation(k3).hasA()) {
                     int l4 = k4 + EntityManager.getAnimation(k3).getNumber();
-                    i4 = (i4 * w) / surface.spriteWidthFull[l4];
-                    j4 = (j4 * h) / surface.spriteHeightFull[l4];
-                    int i5 = (w * surface.spriteWidthFull[l4]) / surface.spriteWidthFull[EntityManager.getAnimation(k3).getNumber()];
+                    i4 = (i4 * w) / surface.sprites[l4].getAssumedWidth();
+                    j4 = (j4 * h) / surface.sprites[l4].getAssumedHeight();
+                    int i5 = (w * surface.sprites[l4].getAssumedWidth()) / surface.sprites[EntityManager.getAnimation(k3).getNumber()].getAssumedWidth();
                     i4 -= (i5 - w) / 2;
                     int col = EntityManager.getAnimation(k3).getCharColour();
                     int skincol = 0;
@@ -2599,7 +2505,7 @@ public class mudclient extends Shell {
         if (super.mouseX > x + 320 && super.mouseY >= y && super.mouseX < x + 408 && super.mouseY < y + 12) {
             colour = 0xff0000;
         }
-        surface.drawstringRight("Close window", x + 406, y + 10, 1, colour);
+        surface.drawStringRight("Close window", x + 406, y + 10, 1, colour);
         surface.drawString("Number in bank in green", x + 7, y + 24, 1, 65280);
         surface.drawString("Number held in blue", x + 289, y + 24, 1, 65535);
         int k7 = bankActivePage * 48;
@@ -2616,7 +2522,7 @@ public class mudclient extends Shell {
                 if (k7 < bankItemCount && bankItems[k7] != -1) {
                     surface.spriteClipping(l8, i9, 48, 32, spriteItem + EntityManager.getItem(bankItems[k7]).getSprite(), EntityManager.getItem(bankItems[k7]).getMask(), 0, 0, false);
                     surface.drawString(String.valueOf(bankItemsCount[k7]), l8 + 1, i9 + 10, 1, 65280);
-                    surface.drawstringRight(String.valueOf(getInventoryCount(bankItems[k7])), l8 + 47, i9 + 29, 1, 65535);
+                    surface.drawStringRight(String.valueOf(getInventoryCount(bankItems[k7])), l8 + 47, i9 + 29, 1, 65535);
                 }
                 k7++;
             }
@@ -2730,7 +2636,7 @@ public class mudclient extends Shell {
             }
         }
     }
-
+    
     public boolean loadNextRegion(int lx, int ly) {
         if (deathScreenTimeout != 0) {
             world.playerIsAlive = false;
@@ -2759,6 +2665,120 @@ public class mudclient extends Shell {
         localUpperX = sectionX * 48 + 32;
         localUpperY = sectionY * 48 + 32;
         world.loadSector(lx, ly, lastHeightOffset);
+        regionX -= planeWidth;
+        regionY -= planeHeight;
+        int offsetx = regionX - ax;
+        int offsety = regionY - ay;
+        for (int objidx = 0; objidx < objectCount; objidx++) {
+            objectX[objidx] -= offsetx;
+            objectY[objidx] -= offsety;
+            int x = objectX[objidx];
+            int y = objectY[objidx];
+            int id = objectID[objidx];
+            int direction = objectDirection[objidx];
+            Model gameModel = objectModel[objidx];
+            try {
+                int objw;
+                int objh;
+                if (direction == 0 || direction == 4) {
+                    objw = EntityManager.getGameObjectDef(id).getWidth();
+                    objh = EntityManager.getGameObjectDef(id).getHeight();
+                } else {
+                    objh = EntityManager.getGameObjectDef(id).getWidth();
+                    objw = EntityManager.getGameObjectDef(id).getHeight();
+                }
+                int j6 = ((x + x + objw) * magicLoc) / 2;
+                int k6 = ((y + y + objh) * magicLoc) / 2;
+                if (x >= 0 && y >= 0 && x < 96 && y < 96) {
+                    scene.addModel(gameModel);
+                    gameModel.place(j6, -world.getAveragedElevation(j6, k6), k6);
+                    world.method412(x, y, id, direction);
+                    if (direction == 74) {
+                        gameModel.translate(0, -480, 0);
+                    }
+                }
+            } catch (RuntimeException e) {
+                System.out.println("Loc Error: " + e.getMessage());
+                System.out.println("i:" + objidx + " obj:" + gameModel);
+                e.printStackTrace();
+            }
+        }
+
+        for (int k2 = 0; k2 < wallObjectCount; k2++) {
+            wallObjectX[k2] -= offsetx;
+            wallObjectY[k2] -= offsety;
+            int i3 = wallObjectX[k2];
+            int l3 = wallObjectY[k2];
+            int j4 = wallObjectId[k2];
+            int i5 = wallObjectDirection[k2];
+            try {
+                world.method408(i3, l3, i5, j4);
+                Model gameModel_1 = createWallModel(i3, l3, i5, j4, k2);
+                wallObjectModel[k2] = gameModel_1;
+            } catch (RuntimeException runtimeexception1) {
+                System.out.println("Bound Error: " + runtimeexception1.getMessage());
+                runtimeexception1.printStackTrace();
+            }
+        }
+
+        for (int j3 = 0; j3 < groundItemCount; j3++) {
+            groundItemX[j3] -= offsetx;
+            groundItemY[j3] -= offsety;
+        }
+
+        for (int i4 = 0; i4 < playerCount; i4++) {
+            Mob character = players[i4];
+            character.currentX -= offsetx * magicLoc;
+            character.currentY -= offsety * magicLoc;
+            for (int j5 = 0; j5 <= character.waypointCurrent; j5++) {
+                character.waypointsX[j5] -= offsetx * magicLoc;
+                character.waypointsY[j5] -= offsety * magicLoc;
+            }
+
+        }
+
+        for (int k4 = 0; k4 < npcCount; k4++) {
+            Mob character_1 = npcs[k4];
+            character_1.currentX -= offsetx * magicLoc;
+            character_1.currentY -= offsety * magicLoc;
+            for (int l5 = 0; l5 <= character_1.waypointCurrent; l5++) {
+                character_1.waypointsX[l5] -= offsetx * magicLoc;
+                character_1.waypointsY[l5] -= offsety * magicLoc;
+            }
+
+        }
+
+        world.playerIsAlive = true;
+        return true;
+    }
+
+    public boolean loadNextRegion(int lx, int ly, int lz) {
+        if (deathScreenTimeout != 0) {
+            world.playerIsAlive = false;
+            return false;
+        }
+        loadingArea = false;
+        lx += planeWidth;
+        ly += planeHeight;
+        if (lastHeightOffset == planeIndex && lx > localLowerX && lx < localUpperX && ly > localLowerY && ly < localUpperY) {
+            world.playerIsAlive = true;
+            return false;
+        }
+        surface.drawStringCenter("Loading... Please wait", 256, 192, 1, 0xffffff);
+        drawChatMessageTabs();
+        surface.draw(graphics, 0, 0);
+        int ax = regionX;
+        int ay = regionY;
+        int sectionX = (lx + 24) / 48;
+        int sectionY = (ly + 24) / 48;
+        lastHeightOffset = planeIndex;
+        regionX = sectionX * 48 - 48;
+        regionY = sectionY * 48 - 48;
+        localLowerX = sectionX * 48 - 32;
+        localLowerY = sectionY * 48 - 32;
+        localUpperX = sectionX * 48 + 32;
+        localUpperY = sectionY * 48 + 32;
+        world.loadSector(lx, ly, lz);
         regionX -= planeWidth;
         regionY -= planeHeight;
         int offsetx = regionX - ax;
@@ -2917,9 +2937,9 @@ public class mudclient extends Shell {
                 }
                 if (i2 != 5 || EntityManager.getAnimation(l3).hasA()) {
                     int k5 = j5 + EntityManager.getAnimation(l3).getNumber();
-                    k4 = (k4 * w) / surface.spriteWidthFull[k5];
-                    i5 = (i5 * h) / surface.spriteHeightFull[k5];
-                    int l5 = (w * surface.spriteWidthFull[k5]) / surface.spriteWidthFull[EntityManager.getAnimation(l3).getNumber()];
+                    k4 = (k4 * w) / surface.sprites[k5].getAssumedWidth();
+                    i5 = (i5 * h) / surface.sprites[k5].getAssumedHeight();
+                    int l5 = (w * surface.sprites[k5].getAssumedWidth()) / surface.sprites[EntityManager.getAnimation(l3).getNumber()].getAssumedWidth();
                     k4 -= (l5 - w) / 2;
                     int i6 = EntityManager.getAnimation(l3).getCharColour();
                     int j6 = characterSkinColours[character.colourSkin];
@@ -2987,72 +3007,66 @@ public class mudclient extends Shell {
             surface.spriteClipping(k3 - j4 / 2, y - l4 / 2 - (10 * ty) / 100, j4, l4, spriteMedia + 13);
         }
     }
-
-    // MISSING: buttons.tga
+    
+    private void loadAnimations() {
+        //drawLoadingBar(30, "Unpacking people and monsters");
+		int animationNumber = 0;
+OUTER:		for (int animationIndex = 0; animationIndex < EntityManager.getAnimations().length; animationIndex++) {
+			String s = EntityManager.getAnimation(animationIndex).getName();
+			for (int nextAnimationIndex = 0; nextAnimationIndex < animationIndex; nextAnimationIndex++) {
+				if (!EntityManager.getAnimation(nextAnimationIndex).getName().equalsIgnoreCase(s)) {
+					continue;
+				}
+				EntityManager.getAnimation(animationIndex).number = EntityManager.getAnimation(nextAnimationIndex).getNumber();
+				continue OUTER;
+			}
+			
+			loadSprite(animationNumber, "entity", 15);
+			if (EntityManager.getAnimation(animationIndex).hasA()) {
+				loadSprite(animationNumber + 15, "entity", 3);
+			}
+			
+			if (EntityManager.getAnimation(animationIndex).hasF()) {
+				loadSprite(animationNumber + 18, "entity", 9);
+			}
+			EntityManager.getAnimation(animationIndex).number = animationNumber;
+			animationNumber += 27;
+		}
+    }
+    
     private void loadMedia() {
         try {
-            byte media[] = readDataFile("media.jag", "2d graphics", 20);
-            if (media == null) {
-                errorLoadingData = true;
-                return;
-            }
-            byte buff[] = Util.unpackData("index.dat", 0, media);
-            byte[] tgaData = new byte[0xffff];
-            Util.readFully(Constants.CACHE_DIRECTORY + "images/inv1.tga", tgaData, tgaData.length);
-            surface.loadSpriteRaw(tgaData, 0, spriteMedia, true, false);
-            Util.readFully(Constants.CACHE_DIRECTORY + "images/inv2.tga", tgaData, tgaData.length);
-            //surface.parseSprite(spriteMedia, Util.unpackData("inv1.dat", 0, media), buff, 1);
-            surface.loadSpriteRaw(tgaData, 0, spriteMedia + 1, true, 1, 6, false);
-            //surface.parseSprite(spriteMedia + 1, Util.unpackData("inv2.dat", 0, media), buff, 6);
-            surface.parseSprite(spriteMedia + 9, Util.unpackData("bubble.dat", 0, media), buff, 1);
-            surface.parseSprite(spriteMedia + 10, Util.unpackData("runescape.dat", 0, media), buff, 1);
-
-            surface.parseSprite(spriteMedia + 11, Util.unpackData("splat.dat", 0, media), buff, 3);
-            surface.parseSprite(spriteMedia + 14, Util.unpackData("icon.dat", 0, media), buff, 8);
-            surface.parseSprite(spriteMedia + 22, Util.unpackData("hbar.dat", 0, media), buff, 1);
-            surface.parseSprite(spriteMedia + 23, Util.unpackData("hbar2.dat", 0, media), buff, 1);
-            surface.parseSprite(spriteMedia + 24, Util.unpackData("compass.dat", 0, media), buff, 1); 
-            surface.parseSprite(spriteMedia + 25, Util.unpackData("buttons.dat", 0, media), buff, 2);
-            Util.readFully(Constants.CACHE_DIRECTORY + "images/play.tga", tgaData, tgaData.length);
-            surface.loadSpriteRaw(tgaData, 0, spriteMedia + 27, true, false);
-            Util.readFully(Constants.CACHE_DIRECTORY + "images/pause.tga", tgaData, tgaData.length);
-            surface.loadSpriteRaw(tgaData, 0, spriteMedia + 28, true, false);
-            Util.readFully(Constants.CACHE_DIRECTORY + "images/stop.tga", tgaData, tgaData.length);
-            surface.loadSpriteRaw(tgaData, 0, spriteMedia + 29, true, false);
-            Util.readFully(Constants.CACHE_DIRECTORY + "images/back.tga", tgaData, tgaData.length);
-            surface.loadSpriteRaw(tgaData, 0, spriteMedia + 30, true, false);
-            Util.readFully(Constants.CACHE_DIRECTORY + "images/forward.tga", tgaData, tgaData.length);
-            surface.loadSpriteRaw(tgaData, 0, spriteMedia + 31, true, false);
-            surface.parseSprite(spriteUtil, Util.unpackData("scrollbar.dat", 0, media), buff, 2);
-            surface.parseSprite(spriteUtil + 2, Util.unpackData("corners.dat", 0, media), buff, 4);
-            surface.parseSprite(spriteUtil + 6, Util.unpackData("arrows.dat", 0, media), buff, 2);
-            int projectileCount = 7;
-            surface.parseSprite(spriteProjectile, Util.unpackData("projectile.dat", 0, media), buff, projectileCount);
-
-            int i = EntityManager.getItemSpriteCount();
-            for (int j = 1; i > 0; j++) {
-                int k = i;
-                i -= 30;
-                if (k > 30) {
-                    k = 30;
+            loadSprite(spriteMedia, "media", 1);
+            loadSprite(spriteMedia + 1, "media", 6);
+            loadSprite(spriteMedia + 9, "media", 1);
+            loadSprite(spriteMedia + 10, "media", 1);
+            loadSprite(spriteMedia + 11, "media", 3);
+            loadSprite(spriteMedia + 14, "media", 8);
+            loadSprite(spriteMedia + 22, "media", 1);
+            loadSprite(spriteMedia + 23, "media", 1);
+            loadSprite(spriteMedia + 24, "media", 1);
+            loadSprite(spriteMedia + 25, "media", 2);
+            loadSprite(spriteMedia + 27, "media", 1);
+            loadSprite(spriteMedia + 28, "media", 1);
+            loadSprite(spriteMedia + 29, "media", 1);
+            loadSprite(spriteMedia + 30, "media", 1);
+            loadSprite(spriteMedia + 31, "media", 1);
+            loadSprite(spriteUtil, "media", 2);
+            loadSprite(spriteUtil + 2, "media", 4);
+            loadSprite(spriteUtil + 6, "media", 2);
+            loadSprite(spriteProjectile, "media", 7);
+            loadSprite(spriteLogo, "media", 1);
+            
+            int itemCount = EntityManager.getItemSpriteCount();
+            for (int i = 1; itemCount > 0; i++) {
+                int n = itemCount;
+                itemCount -= 30;
+                if (n > 30) {
+                    n = 30;
                 }
-                surface.parseSprite(spriteItem + (j - 1) * 30, Util.unpackData("objects" + j + ".dat", 0, media), buff, k);
+                loadSprite(spriteItem + (i - 1) * 30, "media.object", n);
             }
-
-            surface.loadSprite(spriteMedia);
-            surface.loadSprite(spriteMedia + 9);
-            for (int l = 11; l <= 26; l++) {
-                surface.loadSprite(spriteMedia + l);
-            }
-
-            for (int i1 = 0; i1 < projectileCount; i1++) {
-                surface.loadSprite(spriteProjectile + i1);
-            }
-
-            for (int j1 = 0; j1 < EntityManager.getItemSpriteCount(); j1++) {
-                surface.loadSprite(spriteItem + j1);
-            }
-        } catch (Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -3111,12 +3125,11 @@ public class mudclient extends Shell {
         }
         loadGameConfig();
         spriteMedia = 2000;
-        spriteUtil = spriteMedia + 100;
-        spriteItem = spriteUtil + 50;
-        spriteLogo = spriteItem + 1000;
-        spriteProjectile = spriteLogo + 10;
-        spriteTexture = spriteProjectile + 50;
-        spriteTextureWorld = spriteTexture + 10;
+        spriteUtil = 2100;
+        spriteItem = 2150;
+        spriteLogo = 3150;
+        spriteProjectile = 3160;
+        spriteTexture = 3220;
         graphics = getGraphics();
         setTargetFps(50);
         surface = new Screen(gameWidth, gameHeight + 12, 4000, this);
@@ -3135,9 +3148,10 @@ public class mudclient extends Shell {
         //
         createLoginPanels();
         createMessageTabPanel();
-        createAppearancePanel();
         //
         loadMedia();
+        if(errorLoadingData) return;
+        loadAnimations();
         if(errorLoadingData) return;
         loadEntities();
         if(errorLoadingData) return;
@@ -3154,14 +3168,36 @@ public class mudclient extends Shell {
         loadModels();
         if(errorLoadingData) return;
         loadSounds();
+        createAppearancePanel();
         if(!errorLoadingData) {
             showLoadingProgress(100, "Starting game...");
             resetLoginScreenVariables();
-            renderLoginScreenViewports();
+            setupLoginScreenCamera();
         }
         //System.out.println("[Classic Client] Loading process finished!\n");
         //System.out.println("Console:");
         //System.out.println("____________________________________________________________");
+    }
+    
+    private void setupLoginScreenCamera() {
+		int x = 50;
+        int y = 50;
+        int z = 0;
+		world.loadSector(x * 48 + 23, y * 48 + 23, z);
+        world.loadSectorObjects(this.gameModels);
+		scene.clipFar3d = (gameWidth * 9);
+		scene.clipFar2d = (gameWidth * 9);
+		scene.fogZDensity = 1;
+		scene.fogZDistance = (gameWidth * 9);
+		scene.setCamera(loginCamX, -world.getAveragedElevation(loginCamX, loginCamY), loginCamY, cameraPitch, loginCamRotation, 0, loginCamHeight);
+		scene.render();
+		surface.fadePixels();
+		surface.fadePixels();
+		surface.drawBox(0, gameHeight, gameWidth, 0, 0);
+	}
+    
+    public void newWorld() {
+        world = new Terrain(scene, surface);
     }
 
     private void drawUiTabMagic(boolean nomenus) {
@@ -3360,7 +3396,7 @@ public class mudclient extends Shell {
         if (super.mouseX > dialogX + 320 && super.mouseY >= dialogY && super.mouseX < dialogX + 408 && super.mouseY < dialogY + 12) {
             colour = 0xff0000;
         }
-        surface.drawstringRight("Close window", dialogX + 406, dialogY + 10, 1, colour);
+        surface.drawStringRight("Close window", dialogX + 406, dialogY + 10, 1, colour);
         surface.drawString("Shops stock in green", dialogX + 2, dialogY + 24, 1, 65280);
         surface.drawString("Number you own in blue", dialogX + 135, dialogY + 24, 1, 65535);
         surface.drawString("Your money: " + getInventoryCount(10) + "gp", dialogX + 280, dialogY + 24, 1, 0xffff00);
@@ -3378,7 +3414,7 @@ public class mudclient extends Shell {
                 if (shopItem[itemIndex] != -1) {
                     surface.spriteClipping(slotX, slotY, 48, 32, spriteItem + EntityManager.getItem(shopItem[itemIndex]).getSprite(), EntityManager.getItem(shopItem[itemIndex]).getMask(), 0, 0, false);
                     surface.drawString(String.valueOf(shopItemCount[itemIndex]), slotX + 1, slotY + 10, 1, 65280);
-                    surface.drawstringRight(String.valueOf(getInventoryCount(shopItem[itemIndex])), slotX + 47, slotY + 10, 1, 65535);
+                    surface.drawStringRight(String.valueOf(getInventoryCount(shopItem[itemIndex])), slotX + 47, slotY + 10, 1, 65535);
                 }
                 itemIndex++;
             }
@@ -3399,7 +3435,7 @@ public class mudclient extends Shell {
                 if (super.mouseX > dialogX + 298 && super.mouseY >= dialogY + 204 && super.mouseX < dialogX + 408 && super.mouseY <= dialogY + 215) {
                     colour = 0xff0000;
                 }
-                surface.drawstringRight("Click here to buy", dialogX + 405, dialogY + 214, 3, colour);
+                surface.drawStringRight("Click here to buy", dialogX + 405, dialogY + 214, 3, colour);
             } else {
                 surface.drawStringCenter("This item is not currently available to buy", dialogX + 204, dialogY + 214, 3, 0xffff00);
             }
@@ -3408,7 +3444,7 @@ public class mudclient extends Shell {
                 if (itemPrice == 0) {
                     itemPrice = EntityManager.getItem(selectedItemType).getPrice() / 2; // TODO: needs to be fixed
                 }
-                surface.drawstringRight("Sell your " + EntityManager.getItem(selectedItemType).getName() + " for " + itemPrice + "gp", dialogX + 405, dialogY + 239, 1, 0xffff00);
+                surface.drawStringRight("Sell your " + EntityManager.getItem(selectedItemType).getName() + " for " + itemPrice + "gp", dialogX + 405, dialogY + 239, 1, 0xffff00);
                 colour = 0xffffff;
                 if (super.mouseX > dialogX + 2 && super.mouseY >= dialogY + 229 && super.mouseX < dialogX + 112 && super.mouseY <= dialogY + 240) {
                     colour = 0xff0000;
@@ -3471,7 +3507,7 @@ public class mudclient extends Shell {
 
     private void drawGame() {
         if (deathScreenTimeout != 0) {
-            surface.fade2black();
+            surface.fadePixels();
             surface.drawStringCenter("Oh dear! You are dead...", gameWidth / 2, gameHeight / 2, 7, 0xff0000);
             drawChatMessageTabs();
             surface.draw(graphics, 0, 0);
@@ -3482,7 +3518,7 @@ public class mudclient extends Shell {
             return;
         }
         if (isSleeping) {
-            surface.fade2black();
+            surface.fadePixels();
             if (Math.random() < 0.14999999999999999D) {
                 surface.drawStringCenter("ZZZ", (int) (Math.random() * 80D), (int) (Math.random() * (double) gameHeight), 5, (int) (Math.random() * 16777215D));
             }
@@ -3723,8 +3759,8 @@ public class mudclient extends Shell {
             for (int k6 = 0; k6 < 5; k6++) {
                 if (messageHistoryTimeout[k6] > 0) {
                     String s = messageHistory[k6];
-                    int OFFSET = 20;
-                    surface.drawString(s, 7, gameHeight-OFFSET - 18 - k6 * 12, 1, 0xffff00); /* this is where game messages are shown */
+                    int offset = 20;
+                    surface.drawString(s, 7, gameHeight - offset - 18 - k6 * 12, 1, 0xffff00); /* this is where game messages are shown */
                 }
             }
         }
@@ -3754,6 +3790,7 @@ public class mudclient extends Shell {
 
     private void loadSounds() {
         showLoadingProgress(90, "Loading sounds");
+        musicPlayer = new MusicPlayer();
         SoundEffect.init();
     }
 
@@ -3765,9 +3802,18 @@ public class mudclient extends Shell {
         }
         return false;
     }
+    
+    private void loadSprite(int id, String packageName, int amount) {
+		for(int i = id; i < id + amount; i++) {
+			if(!surface.loadSprite(i, packageName)) {
+				errorLoadingData = true;
+				return;
+			}
+		}
+	}
 
     private void loadEntities() {
-        byte entityBuff[] = null;
+        /*byte entityBuff[] = null;
         byte indexDat[] = null;
         entityBuff = readDataFile("entity.jag", "people and monsters", 30);
         if (entityBuff == null) {
@@ -3842,7 +3888,7 @@ public class mudclient extends Shell {
             animIndex += 27;
         }
 
-        System.out.println("[Classic Client] Loaded " + frameCount + " frames of animation");
+        System.out.println("[Classic Client] Loaded " + frameCount + " frames of animation");*/
     }
 
     private void handleAppearancePanelControls() {
@@ -3928,7 +3974,15 @@ public class mudclient extends Shell {
             if (loggedIn == 0) {
                 surface.loggedIn = false;
                 drawLoginScreens();
-                if(musicPlayer != null && musicPlayer.isRunning()) {
+                currentSector = new Point3D(0, 0, 0);
+                scene.clipFar3d = (gameWidth * 9);
+                scene.clipFar2d = (gameWidth * 9);
+                scene.fogZDensity = 1;
+                scene.fogZDistance = (gameWidth * 9);
+                if(!musicPlayer.isRunning()) {
+                    musicPlayer.start("scape_original.mid");
+                }
+                if(musicPlayer != null && musicPlayer.isRunning() && !musicPlayer.getCurrentSong().equals("scape_original.mid")) {
                     musicPlayer.stop();
                 }
             } else if (loggedIn == 1) {
@@ -3946,7 +4000,7 @@ public class mudclient extends Shell {
                     modelSubRoutineTimeout--;
                 }
             }
-        } catch (OutOfMemoryError e) {
+        } catch(OutOfMemoryError e) {
             disposeAndCollect();
             e.printStackTrace();
             errorLoadingMemory = true;
@@ -4009,7 +4063,7 @@ public class mudclient extends Shell {
         int widthOffset = (gameWidth - width) / 2;
         surface.drawBox((gameWidth / 2) - (width / 2), (gameHeight / 2) - (height / 2), width, height, 0);
         surface.drawBoxEdge((gameWidth / 2) - width / 2, (gameHeight / 2) - height / 2, width, height, 0xffffff);
-        surface.drawStringCentered(serverMessage, (gameWidth / 2), ((gameHeight / 2) - height / 2) + 20, 1, 0xffffff, width - 40);
+        surface.drawStringCenter(serverMessage, (gameWidth / 2), ((gameHeight / 2) - height / 2) + 20, 1, 0xffffff, width - 40);
         int i = ((gameHeight / 2) - 10) + height / 2;
         int color = 0xffffff;
         if (super.mouseY > i - 12 && super.mouseY <= i && super.mouseX > widthOffset + 122 && super.mouseX < widthOffset + 276) {
@@ -4141,29 +4195,36 @@ public class mudclient extends Shell {
 
         return count;
     }
+    
+    private int
+        loginCamRotation = 0,
+        loginCamX = 8800,
+        loginCamY = 9200,
+        loginCamHeight = 1600;
+    
+    public boolean hasLoggedIn = false;
+
+	private void drawLoadingScreen() {
+        loginCamRotation++;
+		surface.removeAllPixels();
+        int x = cameraAutoRotatePlayerX + cameraRotationX;
+        int y = cameraAutoRotatePlayerY + cameraRotationY;
+        if(!hasLoggedIn) {
+            x = 8800;
+            y = 9200;
+        }
+        scene.setCamera(x, -world.getAveragedElevation(x, y), y, cameraPitch, loginCamRotation, 0, 1600);
+		scene.render();
+		surface.drawSprite((gameWidth / 2 - 241), (gameHeight / 2) - 190, spriteMedia + 10);
+	}
 
     private void drawLoginScreens() {
         welcomScreenAlreadyShown = false;
         surface.interlace = false;
         surface.blackScreen();
         if (loginScreen == 0 || loginScreen == 2 || loginScreen == 3) {
-            int i = (loginTimer * 2) % 3072;
-            if (i < 1024) {
-                surface.drawSprite(0, 10, spriteLogo);
-                if (i > 768) {
-                    surface.drawSpriteAlpha(0, 10, spriteLogo + 1, i - 768);
-                }
-            } else if (i < 2048) {
-                surface.drawSprite(0, 10, spriteLogo + 1);
-                if (i > 1792) {
-                    surface.drawSpriteAlpha(0, 10, spriteMedia + 10, i - 1792);
-                }
-            } else {
-                surface.drawSprite(0, 10, spriteMedia + 10);
-                if (i > 2816) {
-                    surface.drawSpriteAlpha(0, 10, spriteLogo, i - 2816);
-                }
-            }
+            surface.drawSprite(0, 10, spriteTexture);
+			drawLoadingScreen();
         }
         if (loginScreen == 0) {
             panelLoginWelcome.drawPanel();
@@ -4175,7 +4236,7 @@ public class mudclient extends Shell {
         if (loginScreen == 2) {
             String text = panelLoginExistingUser.getText(controlLoginStatus1);
             if (text != null && text.length() > 0) {
-                surface.drawBoxAlpha(0, 185, gameWidth, 30, 0, 100);
+                //surface.drawBoxAlpha(0, 185, gameWidth, 30, 0, 100);
             }
             panelLoginExistingUser.drawPanel();
         }
@@ -4281,7 +4342,7 @@ public class mudclient extends Shell {
 
     private void loadTextures() {
         showLoadingProgress(50, "Loading 2d textures");
-        byte[] buffTextures = readDataFile("textures.jag", "Textures", 50);
+        /*byte[] buffTextures = readDataFile("textures.jag", "Textures", 50);
         if (buffTextures == null) {
             errorLoadingData = true;
             return;
@@ -4304,13 +4365,73 @@ public class mudclient extends Shell {
             surface.drawSpriteClipping(spriteTextureWorld + i, 0, 0, wh, wh);
             int area = wh * wh;
             for (int j = 0; j < area; j++) {
-                if (surface.surfacePixels[spriteTextureWorld + i][j] == 65280) {
+                if (surface.surfacePixels[spriteTextureWorld + i][j] == 0xff00) {
                     surface.surfacePixels[spriteTextureWorld + i][j] = 0xff00ff;
                 }
             }
             surface.drawWorld(spriteTextureWorld + i);
             scene.defineTexture(i, surface.spriteColoursUsed[spriteTextureWorld + i], surface.spriteColourList[spriteTextureWorld + i], wh / 64 - 1);
-        }
+        }*/
+        scene.allocateTextures(EntityManager.getTextures().length, 7, 11);
+		for (int i = 0; i < EntityManager.getTextures().length; i++) {
+			loadSprite(spriteTexture + i, "texture", 1);
+			Sprite sprite = ((Surface) (surface)).sprites[spriteTexture + i];
+			
+			int length = sprite.getWidth() * sprite.getHeight();
+			int[] pixels = sprite.getPixels();
+			int ai1[] = new int[32768];
+			for (int k = 0; k < length; k++) {
+				ai1[((pixels[k] & 0xf80000) >> 9) + ((pixels[k] & 0xf800) >> 6) + ((pixels[k] & 0xf8) >> 3)]++;
+			}
+			int[] dictionary = new int[256];
+			dictionary[0] = 0xff00ff;
+			int[] temp0 = new int[256];
+			for (int i1 = 0; i1 < ai1.length; i1++) {
+				int j1 = ai1[i1];
+				if (j1 > temp0[255]) {
+					for (int k1 = 1; k1 < 256; k1++) {
+						if (j1 <= temp0[k1]) {
+							continue;
+						}
+						for (int i2 = 255; i2 > k1; i2--) {
+							dictionary[i2] = dictionary[i2 - 1];
+							temp0[i2] = temp0[i2 - 1];
+						}
+						dictionary[k1] = ((i1 & 0x7c00) << 9) + ((i1 & 0x3e0) << 6) + ((i1 & 0x1f) << 3) + 0x40404;
+						temp0[k1] = j1;
+						break;
+					}
+				}
+				ai1[i1] = -1;
+			}
+			byte[] indices = new byte[length];
+			for (int l1 = 0; l1 < length; l1++) {
+				int j2 = pixels[l1];
+				int k2 = ((j2 & 0xf80000) >> 9) + ((j2 & 0xf800) >> 6) + ((j2 & 0xf8) >> 3);
+				int l2 = ai1[k2];
+				if (l2 == -1) {
+					int i3 = 0x3b9ac9ff;
+					int j3 = j2 >> 16 & 0xff;
+					int k3 = j2 >> 8 & 0xff;
+					int l3 = j2 & 0xff;
+					for (int i4 = 0; i4 < 256; i4++) {
+						int j4 = dictionary[i4];
+						int k4 = j4 >> 16 & 0xff;
+						int l4 = j4 >> 8 & 0xff;
+						int i5 = j4 & 0xff;
+						int j5 = (j3 - k4) * (j3 - k4) + (k3 - l4) * (k3 - l4) + (l3 - i5) * (l3 - i5);
+						if (j5 < i3) {
+							i3 = j5;
+							l2 = i4;
+						}
+					}
+					
+					ai1[k2] = l2;
+				}
+				indices[l1] = (byte) l2;
+			}
+			scene.defineTexture(i, indices, dictionary, sprite.getAssumedWidth() / 64 - 1);
+		}
     }
 
     @Override
@@ -5419,10 +5540,10 @@ public class mudclient extends Shell {
         username = u;
         u = Util.formatAuthString(u, 20);
         if (u.trim().length() == 0) {
-            showLoginScreenStatus("You did not enter your username", "Please try again");
+            showLoginScreenStatus("", "You did not enter your username. Please try again");
             return;
         }
-        showLoginScreenStatus("Please wait...", "Reading character data");
+        showLoginScreenStatus("", "Please wait... Reading character data");
         int loginResponse = ActionManager.get(LoginHandler.class).handleLogin(username);
         switch (loginResponse) {
             case 0:
@@ -5433,10 +5554,10 @@ public class mudclient extends Shell {
                 application.setLocationRelativeTo(null);
                 break;
             case 1:
-                showLoginScreenStatus("Account does not exist", "To create an account, select 'new user'");
+                showLoginScreenStatus("", "Account does not exist. To create an account, select 'new user'");
                 break;
             default:
-                showLoginScreenStatus("Unable to log in", "Contact the developer with the stacktrace");
+                showLoginScreenStatus("", "Unable to log in. Contact the developer with the stacktrace");
         }
     }
 

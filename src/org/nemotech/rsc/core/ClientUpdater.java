@@ -1,5 +1,7 @@
 package org.nemotech.rsc.core;
 
+import org.nemotech.rsc.client.mudclient;
+import org.nemotech.rsc.client.sound.MusicPlayer;
 import org.nemotech.rsc.client.update.impl.*;
 import org.nemotech.rsc.model.player.Player;
 import org.nemotech.rsc.model.NPC;

@@ -318,7 +318,7 @@ public class InvAction extends Plugin implements InvActionListener, InvActionExe
             } else {
                 p.message("the pigeons don't want to leave");
             }
-        }//JANGERBERRIES EAT SHIT
+        }
         if(item.getID() == 936) {
             message(p, "You eat the Jangerberries");
             removeItem(p, 936, 1);

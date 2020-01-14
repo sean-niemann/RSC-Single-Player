@@ -115,7 +115,7 @@ public class Scene {
         this.surface = surface;
         clipX = surface.width2 / 2;
         clipY = surface.height2 / 2;
-        raster = surface.pixels;
+        raster = surface.imagePixelArray;
         modelCount = 0;
         maxModelCount = i;
         models = new Model[maxModelCount];
@@ -2758,9 +2758,9 @@ public class Scene {
     private void setTexturePixels(int id) {
         char textureWidth;
         if (textureDimension[id] == 0)
-            textureWidth = 64;//'@';
+            textureWidth = 64;
         else
-            textureWidth = 128;//'\200';
+            textureWidth = 128;
         int colours[] = texturePixels[id];
         int colourCount = 0;
         for (int x = 0; x < textureWidth; x++) {

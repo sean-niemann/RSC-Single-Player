@@ -18,7 +18,7 @@ public class Point3D {
             return true;
         }
 
-        if (!(o instanceof Point3D) || o == null) {
+        if (o == null || !(o instanceof Point3D)) {
             return false;
         }
 

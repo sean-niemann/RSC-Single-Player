@@ -1,5 +1,7 @@
 package org.nemotech.rsc;
 
+import java.io.FileNotFoundException;
+
 import org.nemotech.rsc.client.mudclient;
 import org.nemotech.rsc.client.action.ActionManager;
 import org.nemotech.rsc.client.action.impl.SleepHandler;
@@ -22,7 +24,7 @@ import org.nemotech.rsc.plugins.PluginManager;
  */
 public final class Main {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Welcome to RSC Single Player v" + Constants.VERSION + "\n");
         System.out.println("To report any bugs, exploits, missing or incorrect content, etc. you can contact");
         System.out.println("the developer at sean@nemotech.org [Sean Niemann / Zoso]\n");

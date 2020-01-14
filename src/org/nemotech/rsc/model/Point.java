@@ -49,6 +49,7 @@ public class Point {
         return y;
     }
 
+    @Override
     public int hashCode() {
         return (x << 16) | y;
     }

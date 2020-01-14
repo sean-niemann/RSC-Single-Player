@@ -835,6 +835,7 @@ public final class Player extends Mob {
     public Dimension preferredDimension;
 
     public void load(String username) {
+        mudclient.getInstance().hasLoggedIn = true;
         usernameHash = Util.usernameToHash(username);
         this.username = Util.hashToUsername(usernameHash);
         

@@ -8,6 +8,8 @@ import org.nemotech.rsc.model.player.Player;
 import org.nemotech.rsc.util.StatefulEntityCollection;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ObjectUpdater extends Updater {
     

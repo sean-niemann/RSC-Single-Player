@@ -256,7 +256,7 @@ public class Menu {
     public void drawBox(int x, int y, int width, int height) {
         surface.setBounds(x, y, x + width, y + height);
         surface.drawGradient(x, y, width, height, colourBoxLeftNRight, colourBoxTopNBottom);
-        if (drawBackgroundArrow) {// set to false inside startGame, draw some kindof an arrow??
+        if (drawBackgroundArrow) { // set to false inside startGame(), draws some kind of an arrow
             for (int i1 = x - (y & 0x3f); i1 < x + width; i1 += 128) {
                 for (int j1 = y - (y & 0x1f); j1 < y + height; j1 += 128)
                     surface.drawSpriteAlpha(i1, j1, 6 + baseSpriteStart, 128);
@@ -299,7 +299,7 @@ public class Menu {
     }
 
     protected void drawTextList(int control, int x, int y, int width, int height, int textSize,
-                                String listEntries[], int listEntryCount, int l1) {
+            String listEntries[], int listEntryCount, int l1) {
         int displayedEntryCount = height / surface.textHeight(textSize);
         if (l1 > listEntryCount - displayedEntryCount)
             l1 = listEntryCount - displayedEntryCount;
@@ -530,8 +530,8 @@ public class Menu {
     }
 
     public int addSprite(int x, int y, int spriteId) {
-        int imgWidth = surface.spriteWidth[spriteId];
-        int imgHeight = surface.spriteHeight[spriteId];
+        int imgWidth = surface.sprites[spriteId].getAssumedWidth();
+        int imgHeight = surface.sprites[spriteId].getAssumedHeight();
         controlType[controlCount] = 12;
         controlShown[controlCount] = true;
         controlClicked[controlCount] = false;
@@ -673,8 +673,8 @@ public class Menu {
     }
 
     public int addSpriteList(int spriteId, int x, int y, int maxLength) {
-        int imgWidth = surface.spriteWidth[spriteId];
-        int imgHeight = surface.spriteHeight[spriteId];
+        int imgWidth = surface.sprites[spriteId].getAssumedWidth();
+        int imgHeight = surface.sprites[spriteId].getAssumedHeight();
         controlType[controlCount] = 15;
         controlShown[controlCount] = true;
         controlClicked[controlCount] = false;

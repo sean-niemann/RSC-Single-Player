@@ -23,7 +23,6 @@ import org.nemotech.rsc.external.definition.DoorDef;
 import org.nemotech.rsc.external.definition.GameObjectDef;
 import org.nemotech.rsc.external.definition.ItemDef;
 import org.nemotech.rsc.external.definition.NPCDef;
-import org.nemotech.rsc.model.player.Cache;
 
 public class Admin extends Plugin implements CommandListener {
 
@@ -92,22 +91,14 @@ public class Admin extends Plugin implements CommandListener {
         
         if(command.equals("clearcache")) {
             if(args.length != 1) {
-                player.message("Syntax: ::clearcache <all|key>");
+                player.message("Syntax: ::clearcache <key>");
                 return;
             }
-            if(args[0].equals("all")) {
-                // TODO - BROKEN (ALL COMMAND)
-                for(Map.Entry<String, Object> entry : player.getCache().getCacheMap().entrySet()) {
-                    player.getCache().remove(entry.getKey());
-                }
-                player.message("All player cache successfully removed");
+            if(player.getCache().hasKey(args[0])) {
+                player.getCache().remove(args[0]);
+                player.message("Removed cache key: " + args[0]);
             } else {
-                if(player.getCache().hasKey(args[0])) {
-                    player.getCache().remove(args[0]);
-                    player.message("Removed cache key: " + args[0]);
-                } else {
-                    player.message("Key not found in cache map: " + args[0]);
-                }
+                player.message("Key not found in cache map: " + args[0]);
             }
             return;
         }
@@ -123,11 +114,10 @@ public class Admin extends Plugin implements CommandListener {
         }
         
         if(command.equals("dumpcache")) {
-            Cache cache = player.getCache();
-            for(Map.Entry<String, Object> entry : cache.getCacheMap().entrySet()) {
+            player.getCache().getCacheMap().entrySet().forEach((entry) -> {
                 System.out.println(entry.getKey() + ": " + entry.getValue());
-            }
-            player.message("cache map printed to console");
+            });
+            player.message("Cache map printed to console");
             return;
         }
         
@@ -360,7 +350,7 @@ public class Admin extends Plugin implements CommandListener {
             int x = Integer.parseInt(args[0]);
             int y = Integer.parseInt(args[1]);
             if(World.getWorld().withinWorld(x, y)) {
-                player.teleport(x, y, false);
+                player.teleport(x, y, true);
             } else {
                 player.getSender().sendMessage("Invalid coordinates!");
             }

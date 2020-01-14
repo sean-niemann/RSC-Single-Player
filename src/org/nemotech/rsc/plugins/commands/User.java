@@ -11,11 +11,15 @@ public class User extends Plugin implements CommandListener {
     public void onCommand(String command, String[] args, Player player) {
         if(command.equals("help")) {
             mudclient.getInstance().showAlert("@yel@Single Player RSC Help % %" + "@whi@Type ::stuck if your character gets stuck. % "
-                + "Type ::pos to list your current location in the world.", false);
+                + "Type ::pos to list your current location in the world. % Type ::mapedit to bring up the real time map editor", false);
             return;
         }
         if(command.equals("stuck")) {
             player.teleport(122, 647, true);
+            return;
+        }
+        if(command.equals("reload")) {
+            //mudclient.getInstance().loadSection(mudclient.getInstance().sectionX, mudclient.getInstance().sectionY );
             return;
         }
         if(command.equals("pos") || command.equals("coords") || command.equals("sector")) {
