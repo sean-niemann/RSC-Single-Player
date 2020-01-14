@@ -74,6 +74,7 @@ public class MusicPlayer {
     }
     
     public void start(String fileName) {
+        if(!sequencer.isOpen()) return;
         new Thread(() -> { 
             try {
                 File directory = new File(Constants.CACHE_DIRECTORY + "audio" + File.separator + "music" + File.separator);
@@ -81,7 +82,7 @@ public class MusicPlayer {
                 sequencer.setSequence(is);
                 currentSong = fileName;
                 mudclient.getInstance().selectedSong = fileName;
-                System.out.println("Now playing: " + currentSong);
+                System.out.println("[Music Player] Now playing: " + currentSong);
             } catch(IOException | InvalidMidiDataException e) {
                 e.printStackTrace();
             }
