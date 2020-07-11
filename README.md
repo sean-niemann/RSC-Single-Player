@@ -2,7 +2,7 @@
 RSC Single Player is a one player RuneScape Classic reproduction. The client handles itself entirely and does not rely on a server.
 
 # Latest Downloads
-* [Version 2.4 (Jan 14 2020)](https://github.com/sean-niemann/RSC-Single-Player/releases/download/2.4/RSC_Single_Player_v2.4.zip)
+* [Version 2.4   (Jan 14 2020)](https://github.com/sean-niemann/RSC-Single-Player/releases/download/2.4/RSC_Single_Player_v2.4.zip)
 * [Version 2.3.3 (Nov 30 2019)](https://github.com/sean-niemann/RSC-Single-Player/releases/download/2.3.3/RSC_Single_Player_v2.3.3.zip)
 * [Version 2.3.2 (Nov 25 2019)](https://github.com/sean-niemann/RSC-Single-Player/releases/download/2.3.2/RSC_Single_Player_v2.3.2.zip)
 * [Version 2.3.1 (Nov 20 2019)](https://github.com/sean-niemann/RSC-Single-Player/releases/download/2.3.1/RSC_Single_Player_v2.3.1.zip)
