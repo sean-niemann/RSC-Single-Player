@@ -1,6 +1,9 @@
 # RSC-Single-Player
 RSC Single Player is a standalone single player RuneScape Classic reproduction and sandbox. The application handles itself entirely and does not rely on a local server nor database.
 
+# Browser Version (Version 2.4)
+* https://nemotech.org/apps/rsc-js/ (Use username "test" for player account, or username "root" or "zoso" for dev account)
+
 # Latest Downloads
 * [Version 2.4.0 (Jan 14 2020)](https://github.com/sean-niemann/RSC-Single-Player/releases/download/2.4/RSC_Single_Player_v2.4.zip)
 * [Version 2.3.3 (Nov 30 2019)](https://github.com/sean-niemann/RSC-Single-Player/releases/download/2.3.3/RSC_Single_Player_v2.3.3.zip)
@@ -32,7 +35,5 @@ RSC Single Player is a standalone single player RuneScape Classic reproduction a
 ![picture alt](https://nemotech.org/rsc/rsc-3.png "RSCSP3")
 
 # Other Information
-
-Browser Version: https://nemotech.org/apps/rsc-js/ (Use username "test" for player account, or username "root" or "zoso" for dev account)
 
 Original post: https://forum.moparscape.org/rsc-server-development-discussion/52/release-rsc-single-player-v2-3/672287/
