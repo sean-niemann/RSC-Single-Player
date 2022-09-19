@@ -1,5 +1,5 @@
 # RSC-Single-Player
-RSC Single Player is a standalone single player RuneScape Classic reproduction and sandbox. The application handles itself entirely and does not rely on a local server nor database.
+RSC Single Player is a standalone single player RSC reproduction and sandbox. The application handles itself entirely and does not rely on a local server nor database.
 
 # Browser Version (Version 2.4)
 * https://nemotech.org/apps/rsc-js/ (Use username "test" for player account, or username "root" or "zoso" for dev account)
